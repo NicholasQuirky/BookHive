@@ -1,5 +1,4 @@
 import React from "react";
-import { IoSearch } from 'react-icons/io5';
 import BookhiveLogo from "../images/BookhiveLogo.png";
 
 const Navbar = () => {
@@ -9,13 +8,10 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="Navbar-Items">
-      <nav className="Navbar">
-        <div className="search">
-          <IoSearch className="nav-icon" />
-          <input type="text" placeholder="Enter Book Name" />
-        </div>
-        <div>
+    <div className="Navbar">
+      <img src={BookhiveLogo} alt="BookHive Logo" className="Navbar-logo" />
+      <div className="Navbar-Items">
+        <nav>
           <ul>
             {navItems.map((item, index) => (
               <li key={index}>
@@ -23,9 +19,8 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-        </div>
-        <img src={BookhiveLogo} alt="BookHive Logo" className="Navbar-logo" />
-      </nav>
+        </nav>
+      </div>
     </div>
   );
 };
