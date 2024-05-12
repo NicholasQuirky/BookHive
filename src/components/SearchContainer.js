@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import backgroundImage from '../images/library-background.jpg'; // Replace with your image path
+import backgroundImage from '../images/library-background.png'; // Replace with your image path
 
 function SearchContainer() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,7 +12,7 @@ function SearchContainer() {
         <div className="search-bar">
           <input 
             type="text" 
-            placeholder="Hotdog ni Karl Vivar" 
+            placeholder="Enter Keywords" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)} 
           />
