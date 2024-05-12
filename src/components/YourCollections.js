@@ -1,12 +1,13 @@
 import React from "react";
-import BookCover from "../images/BookCover.png";
+import CollectionCover from "../images/BookCover.png";
 
 const YourCollections = () => {
   const yourCollectionsData = [
-    { title: "Collection 1", image: BookCover },
-    { title: "Collection 2", image: BookCover },
-    { title: "Collection 3", image: BookCover },
-    { title: "Collection 4", image: BookCover },
+    { title: "Collection 1", image: CollectionCover },
+    { title: "Collection 2", image: CollectionCover },
+    { title: "Collection 3", image: CollectionCover },
+    { title: "Collection 4", image: CollectionCover },
+    { title: "Collection 5", image: CollectionCover },
   ];
 
   return (
@@ -18,11 +19,11 @@ const YourCollections = () => {
         <button>Title</button>
       </div>
       <div className="YourCollections">
-        {yourCollectionsData.map((book, index) => (
+        {yourCollectionsData.map((collection, index) => (
           <div key={index} className="YourCollection">
-            <img src={book.image} alt={book.title} />
+            <img src={collection.image} alt={collection.title} />
             <div className="YourCollectionInfo">
-              <h3 className="CollectionTitle">{book.title}</h3>
+              <h3 className="CollectionTitle">{collection.title}</h3>
             </div>
           </div>
         ))}
