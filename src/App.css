@@ -248,6 +248,8 @@ body {
 .PopularBookInfo, .PopularBookAuthor {
   color: black;
 }
+
+
 /* Your Collections*/
 
 .YourCollectionsContainer {
@@ -260,8 +262,9 @@ body {
 
 .YourCollections {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-gap: -10px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px; 
+  justify-content: center;
 }
 
 .YourCollection {
@@ -269,8 +272,8 @@ body {
   flex-direction: column;
   gap: 10px;
   border-radius: 10px;
-  overflow: hidden;
-  max-width: 240px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .YourCollection img {
@@ -281,13 +284,22 @@ body {
 
 .YourCollection:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(0.9);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .CollectionTitle {
   font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  margin: 0;
 }
+
+
+.YourCollectionInfo {
+  color: black;
+}
+
 
 .SortByOptions-YourCollections {
   display: flex;
@@ -329,8 +341,9 @@ body {
 
 .FavouriteBooks {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-gap: -10px;
+  justify-content: center;
 }
 
 .FavouriteBook {
@@ -340,6 +353,8 @@ body {
   border-radius: 10px;
   overflow: hidden;
   max-width: 240px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .FavouriteBook img {
@@ -350,13 +365,18 @@ body {
 
 .FavouriteBook:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(0.9);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .FavouriteBookTitle {
   font-weight: 700;
 }
+
+.FavouriteBookAuthor {
+  margin: 0;
+}
+
 
 .SortByOptions-FavouriteBooks {
   display: flex;
