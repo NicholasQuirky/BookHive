@@ -26,6 +26,7 @@ const SuggestedBooks = () => {
       </div>
     </div>
   );
+  
 };
 
 export default SuggestedBooks;

@@ -36,16 +36,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  padding: 20px 50px;
+  padding: 10px 50px;
   background: #9c6644;
 }
 
 .Navbar-Items {
-  flex-grow: 1; /* Allow the Navbar-Items div to grow and push the spacer to the right */
+  flex-grow: 1; 
 }
 
 .spacer {
-  flex-grow: 2; /* Adjust the value to control the spacing between the logo and the links */
+  flex-grow: 2; 
 }
 
 .Navbar-Items a {
@@ -131,8 +131,10 @@ body {
 
 /* Suggested Books */
 
+/* Suggested Books */
 .SuggestedBooksContainer {
   padding: 50px;
+  border-bottom: 2px solid #797979; /* Add a border-bottom */
 }
 
 .SuggestedBooksContainer h4 {
@@ -143,7 +145,7 @@ body {
 .SuggestedBooks {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 20px; 
+  grid-gap: 20px; 
   justify-content: center;
 }
 
@@ -152,12 +154,8 @@ body {
   flex-direction: column;
   gap: 10px;
   border-radius: 10px;
-  overflow: hidden;
-  max-width: 240px;
-}
-
-.SuggestedBookInfo {
-  color: black;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .SuggestedBook img {
@@ -168,8 +166,26 @@ body {
 
 .SuggestedBook:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(0.9);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.SuggestedBookTitle {
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.SuggestedBookAuthor {
+  color: rgb(148, 148, 148);
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
+.SuggestedBookInfo, .SuggestedBookAuthor {
+  color: black;
 }
 
 .BookTitle {
@@ -199,12 +215,8 @@ body {
   flex-direction: column;
   gap: 10px;
   border-radius: 10px;
-  overflow: hidden;
-  max-width: 240px;
-}
-
-.PopularBookInfo {
-  color: black;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .PopularBook img {
@@ -215,14 +227,27 @@ body {
 
 .PopularBook:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(0.9);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .PopularBookTitle {
   font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  margin: 0;
 }
 
+.PopularBookAuthor {
+  color: rgb(148, 148, 148);
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
+.PopularBookInfo, .PopularBookAuthor {
+  color: black;
+}
 /* Your Collections*/
 
 .YourCollectionsContainer {

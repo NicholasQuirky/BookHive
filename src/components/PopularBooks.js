@@ -12,7 +12,7 @@ const PopularBooks = () => {
 
   return (
     <div className="PopularBooksContainer">
-      <h4>Popular Books</h4>
+      <h4>Suggested Books For You</h4>
       <div className="PopularBooks">
         {popularBooksData.map((book, index) => (
           <div key={index} className="PopularBook">
@@ -26,6 +26,7 @@ const PopularBooks = () => {
       </div>
     </div>
   );
+  
 };
 
 export default PopularBooks;
