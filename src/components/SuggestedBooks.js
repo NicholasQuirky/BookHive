@@ -7,6 +7,7 @@ const SuggestedBooks = () => {
     { title: "Book 2", author: "Author 2", image: BookCover },
     { title: "Book 3", author: "Author 3", image: BookCover },
     { title: "Book 4", author: "Author 4", image: BookCover },
+    { title: "Book 5", author: "Author 6", image: BookCover },
   ];
 
   return (

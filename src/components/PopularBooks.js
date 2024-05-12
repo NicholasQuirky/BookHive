@@ -7,6 +7,7 @@ const PopularBooks = () => {
     { title: "Popular Book 2", author: "Author 2", image: PopularBookCover },
     { title: "Popular Book 3", author: "Author 3", image: PopularBookCover },
     { title: "Popular Book 4", author: "Author 4", image: PopularBookCover },
+    { title: "Popular Book 5", author: "Author 6", image: PopularBookCover },
   ];
 
   return (
