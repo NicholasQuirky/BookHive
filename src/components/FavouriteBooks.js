@@ -24,8 +24,8 @@ const FavouriteBooks = () => {
           <div key={index} className="FavouriteBook">
             <img src={book.image} alt={book.title} />
             <div className="FavouriteBookInfo">
-            <h3 className="FavouriteBookTitle">{book.title}</h3>
-            <p className="FavouriteBookAuthor">by {book.author}</p>
+              <h3 className="FavouriteBookTitle">{book.title}</h3>
+              <p className="FavouriteBookAuthor">by {book.author}</p>
             </div>
           </div>
         ))}

@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import PopularBookCover from "../images/BookCover.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const PopularBooks = () => {
+  const [popularBooks, setPopularBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const suggestedBooksData = [
-    { title: "Popular Book 1", author: "Author 1", description: "Generate random text strings with various options and characters. The randomness comes from atmospheric noise, which is better than pseudo-random number algorithms.", image: PopularBookCover },
-    { title: "Popular Book 2", author: "Author 2", description: "Description 2", image: PopularBookCover },
-    { title: "Popular Book 3", author: "Author 3", description: "Description 3", image: PopularBookCover },
-    { title: "Popular Book 4", author: "Author 4", description: "Description 4", image: PopularBookCover },
-    { title: "Popular Book 5", author: "Author 5", description: "Description 5", image: PopularBookCover },
-  ];
+  useEffect(() => {
+    const fetchPopularBooks = async () => {
+      try {
+        const response = await axios.get(
+          "https://www.googleapis.com/books/v1/volumes?q=Fiction&maxResults=5&key=AIzaSyBrg6gyOZTUx2lC9Tb03C4wrNN7JL-nsPw&maxResults=10"
+        );
+        setPopularBooks(response.data.items || []);
+      } catch (error) {
+        console.error("Error fetching popular books:", error);
+      }
+    };
 
-  const handleBookClick = (index) => {
-    setSelectedBook(suggestedBooksData[index]);
+    fetchPopularBooks();
+  }, []);
+
+  const handleBookClick = (book) => {
+    setSelectedBook(book);
   };
 
   const handleCloseDialog = () => {
@@ -24,12 +32,24 @@ const PopularBooks = () => {
     <div className="PopularBooksContainer">
       <h4>Popular Books</h4>
       <div className="PopularBooks">
-        {suggestedBooksData.map((book, index) => (
-          <div key={index} className="PopularBook" onClick={() => handleBookClick(index)}>
-            <img src={book.image} alt={book.title} />
+        {popularBooks.map((book, index) => (
+          <div
+            key={index}
+            className="PopularBook"
+            onClick={() => handleBookClick(book)}
+          >
+            <img
+              src={book.volumeInfo.imageLinks.thumbnail}
+              alt={book.volumeInfo.title}
+            />
             <div className="PopularBookInfo">
-              <h3 className="PopularBookTitle">{book.title}</h3>
-              <p className="PopularBookAuthor">by {book.author}</p>
+              <h3 className="PopularBookTitle">{book.volumeInfo.title}</h3>
+              <p className="PopularBookAuthor">
+                by{" "}
+                {book.volumeInfo.authors
+                  ? book.volumeInfo.authors.join(", ")
+                  : "Unknown"}
+              </p>
             </div>
           </div>
         ))}
@@ -37,14 +57,27 @@ const PopularBooks = () => {
       {selectedBook && (
         <div className="PopupDialog">
           <div className="PopupContent">
-          <span className="CloseButton" onClick={handleCloseDialog}>X</span>
+            <span className="CloseButton" onClick={handleCloseDialog}>
+              X
+            </span>
             <div className="PopupLeftColumn">
-              <img src={selectedBook.image} alt={selectedBook.title} />
-              <p className="DialogTitle">{selectedBook.title}</p>
-              <p className="DialogAuthor">By: {selectedBook.author}</p>
+              <img
+                src={selectedBook.volumeInfo.imageLinks.thumbnail}
+                alt={selectedBook.volumeInfo.title}
+              />
+              <p className="DialogTitle">{selectedBook.volumeInfo.title}</p>
+              <p className="DialogAuthor">
+                By:{" "}
+                {selectedBook.volumeInfo.authors
+                  ? selectedBook.volumeInfo.authors.join(", ")
+                  : "Unknown"}
+              </p>
             </div>
             <div className="PopupRightColumn">
-              <p className="DialogDescription">{selectedBook.description}</p>
+              <p className="DialogDescription">
+                {selectedBook.volumeInfo.description ||
+                  "No description available"}
+              </p>
             </div>
             <button className="AddToFavoritesButton">Add to Favorites</button>
           </div>
@@ -52,7 +85,6 @@ const PopularBooks = () => {
       )}
     </div>
   );
-  
 };
 
 export default PopularBooks;

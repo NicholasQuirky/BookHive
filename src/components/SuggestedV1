@@ -10,7 +10,7 @@ const SuggestedBooks = () => {
     const fetchSuggestedBooks = async () => {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=InternetOfThings&key=AIzaSyBrg6gyOZTUx2lC9Tb03C4wrNN7JL-nsPw&maxResults=10`
+          `https://www.googleapis.com/books/v1/volumes?q=InformationTechnology&key=YOUR_API_KEY&maxResults=10`
         );
         setSuggestedBooks(response.data.items);
       } catch (error) {
@@ -37,7 +37,7 @@ const SuggestedBooks = () => {
           <div
             key={index}
             className="SuggestedBook"
-            onClick={() => handleBookClick(book)}
+            onClick={() => handleBookClick(book)} // Pass the entire book object to handleBookClick
           >
             <img
               src={

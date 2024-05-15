@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/* Search Results */
+.SearchResultsContainer {
+  position: relative;
+  padding: 50px;
+  border-radius: 20px;
+  background-color: #e6ccb2;
+  margin: 30px;
+}
+
+.SearchResultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SearchResultsHeader h4 {
+  font-size: 20px;
+  color: black;
+}
+
+.CloseButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.SearchResults {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.SearchResultBook {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ede0d4;
+}
+
+.SearchResultBook img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.SearchResultBook:hover {
+  cursor: pointer;
+  transform: scale(0.9);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.SearchResultBookInfo {
+  text-align: center;
+}
+
+.SearchResultBookTitle {
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  margin: 0;
+  color: black;
+}
+
+.SearchResultBookAuthor {
+  color: rgb(148, 148, 148);
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 400;
+}
