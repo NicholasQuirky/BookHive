@@ -256,6 +256,7 @@ body {
   margin: 0%;
   margin-top: 10px;
   font-weight: 700;
+  width: 220px;
 }
 
 .DialogAuthor {
@@ -285,7 +286,7 @@ body {
   padding-top: 0px;
 }
 
-.AddToFavoritesButton {
+.AddToFavoritesButton, .SeeMoreButton {
   background-color: #B08968;
   border: none;
   border-radius: 10px;
@@ -302,6 +303,10 @@ body {
 }
 
 .AddToFavoritesButton:hover {
+  background-color: #7F5539;
+}
+
+.SeeMoreButton:hover {
   background-color: #7F5539;
 }
 
