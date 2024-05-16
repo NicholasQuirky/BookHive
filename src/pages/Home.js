@@ -8,10 +8,16 @@ import SearchResults from "../components/SearchResults"; // Import the SearchRes
 function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
+  const [favorites, setFavorites] = useState([]); // State to hold favorites
 
   const closeSearchResults = () => {
     setSearchResultsVisible(false);
     setSearchResults([]);
+  };
+
+  const addToFavorites = (book) => {
+    setFavorites((prevFavorites) => [...prevFavorites, book]);
+    console.log("Added to favorites:", book);
   };
 
   return (
@@ -26,6 +32,7 @@ function Home() {
           <SearchResults
             searchResults={searchResults}
             onClose={closeSearchResults}
+            onAddToFavorites={addToFavorites}
           />
         )}
         {!searchResultsVisible && (
