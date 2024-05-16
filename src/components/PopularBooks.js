@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PopupDialog from './PopupDialog';
-import SeeMoreButton from './SeeMoreButton'; // Import the new component
-
+import SeeMoreButton from './SeeMoreButton'; 
 const PopularBooks = ({ favoriteBooks, addToFavorites }) => {
   const [popularBooks, setPopularBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);

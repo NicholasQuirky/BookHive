@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BookCover from '../images/BookCover.png';
 import PopupDialog from './PopupDialog';
-import SeeMoreButton from './SeeMoreButton'; // Import the new component
+import SeeMoreButton from './SeeMoreButton'; 
 
 const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
   const [suggestedBooks, setSuggestedBooks] = useState([]);
