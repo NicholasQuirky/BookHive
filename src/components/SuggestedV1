@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import BookCover from "../images/BookCover.png";
 
-const PopularBooks = () => {
-  const [popularBooks, setPopularBooks] = useState([]);
+const SuggestedBooks = () => {
+  const [suggestedBooks, setSuggestedBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    const fetchPopularBooks = async () => {
+    const fetchSuggestedBooks = async () => {
       try {
         const response = await axios.get(
-          "https://www.googleapis.com/books/v1/volumes?q=Fiction&maxResults=5&key=AIzaSyBrg6gyOZTUx2lC9Tb03C4wrNN7JL-nsPw&maxResults=10"
+          `https://www.googleapis.com/books/v1/volumes?q=InformationTechnology&key=YOUR_API_KEY&maxResults=10`
         );
-        setPopularBooks(response.data.items || []);
+        setSuggestedBooks(response.data.items);
       } catch (error) {
-        console.error("Error fetching popular books:", error);
+        console.error("Error fetching suggested books:", error);
       }
     };
 
-    fetchPopularBooks();
+    fetchSuggestedBooks();
   }, []);
 
   const handleBookClick = (book) => {
@@ -29,22 +30,26 @@ const PopularBooks = () => {
   };
 
   return (
-    <div className="PopularBooksContainer">
-      <h4>Popular Books</h4>
-      <div className="PopularBooks">
-        {popularBooks.map((book, index) => (
+    <div className="SuggestedBooksContainer">
+      <h4>Suggested Books For You</h4>
+      <div className="SuggestedBooks">
+        {suggestedBooks.map((book, index) => (
           <div
             key={index}
-            className="PopularBook"
-            onClick={() => handleBookClick(book)}
+            className="SuggestedBook"
+            onClick={() => handleBookClick(book)} // Pass the entire book object to handleBookClick
           >
             <img
-              src={book.volumeInfo.imageLinks.thumbnail}
+              src={
+                book.volumeInfo.imageLinks
+                  ? book.volumeInfo.imageLinks.thumbnail
+                  : BookCover
+              }
               alt={book.volumeInfo.title}
             />
-            <div className="PopularBookInfo">
-              <h3 className="PopularBookTitle">{book.volumeInfo.title}</h3>
-              <p className="PopularBookAuthor">
+            <div className="SuggestedBookInfo">
+              <h3 className="SuggestedBookTitle">{book.volumeInfo.title}</h3>
+              <p className="SuggestedBookAuthor">
                 by{" "}
                 {book.volumeInfo.authors
                   ? book.volumeInfo.authors.join(", ")
@@ -87,4 +92,4 @@ const PopularBooks = () => {
   );
 };
 
-export default PopularBooks;
+export default SuggestedBooks;

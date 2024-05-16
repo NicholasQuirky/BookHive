@@ -1,15 +1,8 @@
 import React from "react";
 import BookCover from "../images/BookCover.png";
 
-const FavouriteBooks = () => {
-  const favouriteBooksData = [
-    { title: "Book 1", author: "Author 1", image: BookCover },
-    { title: "Book 2", author: "Author 2", image: BookCover },
-    { title: "Book 3", author: "Author 3", image: BookCover },
-    { title: "Book 4", author: "Author 4", image: BookCover },
-    { title: "Book 5", author: "Author 5", image: BookCover },
-  ];
-
+function FavouriteBooks({ favoriteBooks, addToFavorites }) {
+  console.log("Favorite books:", favoriteBooks); // Debugging line to check props
   return (
     <div className="FavouriteBooksContainer">
       <h4>Favourite Books</h4>
@@ -20,18 +13,26 @@ const FavouriteBooks = () => {
         <button>Author</button>
       </div>
       <div className="FavouriteBooks">
-        {favouriteBooksData.map((book, index) => (
+        {favoriteBooks.map((book, index) => (
           <div key={index} className="FavouriteBook">
-            <img src={book.image} alt={book.title} />
+            <img
+              src={book.volumeInfo.imageLinks?.thumbnail || BookCover}
+              alt={book.volumeInfo.title}
+            />
             <div className="FavouriteBookInfo">
-            <h3 className="FavouriteBookTitle">{book.title}</h3>
-            <p className="FavouriteBookAuthor">by {book.author}</p>
+              <h3 className="FavouriteBookTitle">{book.volumeInfo.title}</h3>
+              <p className="FavouriteBookAuthor">
+                by{" "}
+                {book.volumeInfo.authors
+                  ? book.volumeInfo.authors.join(", ")
+                  : "Unknown"}
+              </p>
             </div>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default FavouriteBooks;

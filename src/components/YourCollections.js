@@ -1,7 +1,7 @@
 import React from "react";
 import CollectionCover from "../images/BookCover.png";
 
-const YourCollections = () => {
+const YourCollections = ({ addToFavorites }) => {
   const yourCollectionsData = [
     { title: "Collection 1", image: CollectionCover },
     { title: "Collection 2", image: CollectionCover },

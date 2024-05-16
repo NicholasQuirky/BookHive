@@ -3,14 +3,17 @@ import Navbar from "../components/Navbar";
 import YourCollections from "../components/YourCollections";
 import FavouriteBooks from "../components/FavouriteBooks";
 
-function YourLibrary() {
-    return (
-      <div>
-        <Navbar /> 
-        <YourCollections />
-        <FavouriteBooks />
-      </div>
-    );
-  }
-  
-  export default YourLibrary;
+function YourLibrary({ favoriteBooks, addToFavorites }) {
+  return (
+    <div>
+      <Navbar />
+      <YourCollections />
+      <FavouriteBooks
+        favoriteBooks={favoriteBooks}
+        addToFavorites={addToFavorites}
+      />
+    </div>
+  );
+}
+
+export default YourLibrary;
