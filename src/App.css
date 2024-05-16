@@ -304,6 +304,10 @@ body {
   cursor: pointer;
 }
 
+.SeeMoreButton{
+  margin-top: 30px;
+}
+
 .AddToFavoritesButton:hover {
   background-color: #7F5539;
 }
