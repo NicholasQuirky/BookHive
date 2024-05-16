@@ -1,5 +1,3 @@
-// src/components/SearchResults.js
-
 import React, { useState, useContext } from 'react';
 import { FavoritesContext } from '../context/FavoritesContext';
 import PopupDialog from './PopupDialog';

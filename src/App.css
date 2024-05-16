@@ -246,6 +246,7 @@ body {
   cursor: pointer;
   font-size: 30px;
   color: #ff0000;
+  background: none;
   /* padding: 8px; */
 }
 

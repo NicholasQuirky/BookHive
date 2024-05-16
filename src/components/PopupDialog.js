@@ -33,11 +33,6 @@ const PopupDialog = ({ book, onClose, onAddToFavorites }) => {
           </button>
         )}
         </div>
-        {/* {onAddToFavorites && (
-          <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
-            Add to Favorites
-          </button>
-        )} */}
       </div>
     </div>
   );
