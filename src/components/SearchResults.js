@@ -1,10 +1,13 @@
-import React, { useState, useContext } from "react";
-import { FavoritesContext } from "../context/FavoritesContext";
-import "./SearchResults.css";
+// src/components/SearchResults.js
+
+import React, { useState, useContext } from 'react';
+import { FavoritesContext } from '../context/FavoritesContext';
+import PopupDialog from './PopupDialog';
+import './SearchResults.css';
 
 const SearchResults = ({ searchResults, onClose }) => {
   const [clickedBook, setClickedBook] = useState(null);
-  const { addBookToFavorites } = useContext(FavoritesContext); // Use addBookToFavorites from context
+  const { addBookToFavorites } = useContext(FavoritesContext);
 
   const handleBookClick = (book) => {
     setClickedBook(book);
@@ -16,7 +19,7 @@ const SearchResults = ({ searchResults, onClose }) => {
 
   const handleAddToFavorites = () => {
     if (clickedBook) {
-      addBookToFavorites(clickedBook); // Use addBookToFavorites to add book to favorites
+      addBookToFavorites(clickedBook);
       setClickedBook(null);
     }
   };
@@ -39,7 +42,7 @@ const SearchResults = ({ searchResults, onClose }) => {
             <img
               src={
                 book.volumeInfo.imageLinks?.thumbnail ||
-                "path_to_placeholder_image"
+                'path_to_placeholder_image'
               }
               alt={book.volumeInfo.title}
             />
@@ -56,38 +59,11 @@ const SearchResults = ({ searchResults, onClose }) => {
         ))}
       </div>
       {clickedBook && (
-        <div className="PopupDialog">
-          <div className="PopupContent">
-            <span className="CloseButton" onClick={handleCloseDialog}>
-              X
-            </span>
-            <div className="PopupLeftColumn">
-              <img
-                src={clickedBook.volumeInfo.imageLinks?.thumbnail}
-                alt={clickedBook.volumeInfo.title}
-              />
-              <p className="DialogTitle">{clickedBook.volumeInfo.title}</p>
-              <p className="DialogAuthor">
-                By:{" "}
-                {clickedBook.volumeInfo.authors
-                  ? clickedBook.volumeInfo.authors.join(", ")
-                  : "Unknown"}
-              </p>
-            </div>
-            <div className="PopupRightColumn">
-              <p className="DialogDescription">
-                {clickedBook.volumeInfo.description ||
-                  "No description available"}
-              </p>
-            </div>
-            <button
-              className="AddToFavoritesButton"
-              onClick={handleAddToFavorites}
-            >
-              Add to Favorites
-            </button>
-          </div>
-        </div>
+        <PopupDialog
+          book={clickedBook}
+          onClose={handleCloseDialog}
+          onAddToFavorites={handleAddToFavorites}
+        />
       )}
     </div>
   );

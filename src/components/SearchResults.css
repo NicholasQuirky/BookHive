@@ -21,19 +21,20 @@
   color: black;
 }
 
-.CloseButton {
+/* .CloseButton {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 26px;
   cursor: pointer;
   color: #ff0000;
   font-weight: bold;
-}
+  padding: 8px;
+} */
 
 .SearchResults {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px; 
   justify-content: center;
 }
 

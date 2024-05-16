@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import BookCover from "../images/BookCover.png";
+// src/components/SuggestedBooks.js
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import BookCover from '../images/BookCover.png';
+import PopupDialog from './PopupDialog';
 
 const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
   const [suggestedBooks, setSuggestedBooks] = useState([]);
-  const [clickedBook, setClickedBook] = useState(null);
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
         );
         setSuggestedBooks(response.data.items);
       } catch (error) {
-        console.error("Error fetching suggested books:", error);
+        console.error('Error fetching suggested books:', error);
       }
     };
 
@@ -68,38 +70,11 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
         ))}
       </div>
       {selectedBook && (
-        <div className="PopupDialog">
-          <div className="PopupContent">
-            <span className="CloseButton" onClick={handleCloseDialog}>
-              X
-            </span>
-            <div className="PopupLeftColumn">
-              <img
-                src={selectedBook.volumeInfo.imageLinks.thumbnail}
-                alt={selectedBook.volumeInfo.title}
-              />
-              <p className="DialogTitle">{selectedBook.volumeInfo.title}</p>
-              <p className="DialogAuthor">
-                By:{" "}
-                {selectedBook.volumeInfo.authors
-                  ? selectedBook.volumeInfo.authors.join(", ")
-                  : "Unknown"}
-              </p>
-            </div>
-            <div className="PopupRightColumn">
-              <p className="DialogDescription">
-                {selectedBook.volumeInfo.description ||
-                  "No description available"}
-              </p>
-            </div>
-            <button
-              className="AddToFavoritesButton"
-              onClick={handleAddToFavorites}
-            >
-              Add to Favorites
-            </button>
-          </div>
-        </div>
+        <PopupDialog
+          book={selectedBook}
+          onClose={handleCloseDialog}
+          onAddToFavorites={handleAddToFavorites}
+        />
       )}
     </div>
   );

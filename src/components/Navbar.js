@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import BookhiveLogo from "../images/BookhiveLogo.png";
 
 const Navbar = () => {
@@ -15,7 +16,14 @@ const Navbar = () => {
           <ul>
             {navItems.map((item, index) => (
               <li key={index}>
-                <a href={item.link}>{item.text}</a>
+                <NavLink
+                  to={item.link}
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  {item.text}
+                </NavLink>
               </li>
             ))}
           </ul>
