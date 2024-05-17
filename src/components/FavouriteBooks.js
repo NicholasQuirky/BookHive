@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import BookCover from "../images/BookCover.png";
 
 function FavouriteBooks({ favoriteBooks, addToFavorites }) {
+  const [sortOrder, setSortOrder] = useState("recent");
   const [filter, setFilter] = useState("All");
   const [categories, setCategories] = useState(["All"]);
 
   useEffect(() => {
     // Extract unique categories from favoriteBooks
     const uniqueCategories = new Set();
-    favoriteBooks.forEach(book => {
+    favoriteBooks.forEach((book) => {
       if (book.volumeInfo.categories) {
-        book.volumeInfo.categories.forEach(category => uniqueCategories.add(category));
+        book.volumeInfo.categories.forEach((category) => uniqueCategories.add(category));
       }
     });
 
@@ -18,10 +19,34 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
     setCategories(["All", ...Array.from(uniqueCategories)]);
   }, [favoriteBooks]);
 
-  const filteredBooks = favoriteBooks.filter(book => {
+  const sortBooks = (books, order) => {
+    switch (order) {
+      case "title":
+        return books.sort((a, b) =>
+          a.volumeInfo.title.localeCompare(b.volumeInfo.title)
+        );
+      case "author":
+        return books.sort((a, b) => {
+          const authorA = a.volumeInfo.authors ? a.volumeInfo.authors[0] : "";
+          const authorB = b.volumeInfo.authors ? b.volumeInfo.authors[0] : "";
+          return authorA.localeCompare(authorB);
+        });
+      case "recent":
+      default:
+        return books; // Assuming favoriteBooks is already in "Recently Added" order
+    }
+  };
+
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+  };
+
+  const filteredBooks = favoriteBooks.filter((book) => {
     if (filter === "All") return true;
     return book.volumeInfo.categories?.includes(filter);
   });
+
+  const sortedBooks = sortBooks([...filteredBooks], sortOrder);
 
   return (
     <div className="FavouriteBooksContainer">
@@ -29,9 +54,10 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
       <div className="OptionsContainer">
         <div className="SortByOptions-FavouriteBooks">
           <span>Sort By:</span>
-          <button>Recently Added</button>
-          <button>Title</button>
-          <button>Author</button>
+          <button onClick={() => handleSortChange("recent")}>Recently Added</button>
+          <button onClick={() => handleSortChange("title")}>Title</button>
+          <button onClick={() => handleSortChange("author")}>Author</button>
+        </div>
         <div className="FilterByCategory">
           <span className="FilterLabel">Filter By Category:</span>
           <select value={filter} onChange={(e) => setFilter(e.target.value)} className="CategoryDropdown">
@@ -41,11 +67,10 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
               </option>
             ))}
           </select>
-        </div>  
         </div>
       </div>
       <div className="FavouriteBooks">
-        {filteredBooks.map((book, index) => (
+        {sortedBooks.map((book, index) => (
           <div key={index} className="FavouriteBook">
             <img
               src={book.volumeInfo.imageLinks?.thumbnail || BookCover}
