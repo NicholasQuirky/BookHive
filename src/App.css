@@ -59,9 +59,9 @@ body {
 }
 
 .nav-link.active {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-  border-bottom: 1.75px solid white; 
+  /* border-bottom: 1.75px solid white;  */
 }
 
 .nav-icon {
