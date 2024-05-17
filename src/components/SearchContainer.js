@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import backgroundImage from "../images/library-background.png";
-import SearchResults from "./SearchResults"; // Import the SearchResults component
+import SearchResults from "./SearchResults";
 
-function SearchContainer({ setSearchResultsVisible, setSearchResults }) {
+function SearchContainer({ favoriteBooks, addToFavorites }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchResultsVisible, setSearchResultsVisible] = useState(false);
 
   const handleSearch = async () => {
     try {
@@ -16,6 +18,11 @@ function SearchContainer({ setSearchResultsVisible, setSearchResults }) {
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
+  };
+
+  const handleCloseSearchResults = () => {
+    setSearchResultsVisible(false);
+    setSearchResults([]);
   };
 
   return (
@@ -39,6 +46,16 @@ function SearchContainer({ setSearchResultsVisible, setSearchResults }) {
           </button>
         </div>
       </div>
+      {searchResultsVisible && (
+        <SearchResults
+          searchResults={searchResults}
+          setSearchResults={setSearchResults}
+          searchQuery={searchQuery}
+          onClose={handleCloseSearchResults}
+          addToFavorites={addToFavorites}
+          favoriteBooks={favoriteBooks}
+        />
+      )}
     </div>
   );
 }

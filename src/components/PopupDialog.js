@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import './PopupDialog.css';
 
 const PopupDialog = ({ book, onClose, onAddToFavorites }) => {
@@ -12,7 +12,9 @@ const PopupDialog = ({ book, onClose, onAddToFavorites }) => {
         </span>
         <div className="PopupLeftColumn">
           <img
-            src={book.volumeInfo.imageLinks.thumbnail}
+            src={
+              book.volumeInfo.imageLinks?.thumbnail || "../images/BookCover.png"
+            }
             alt={book.volumeInfo.title}
           />
           <p className="DialogTitle">{book.volumeInfo.title}</p>
@@ -28,10 +30,10 @@ const PopupDialog = ({ book, onClose, onAddToFavorites }) => {
             {book.volumeInfo.description || "No description available"}
           </p>
           {onAddToFavorites && (
-          <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
-            Add to Favorites
-          </button>
-        )}
+            <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
+              Add to Favorites
+            </button>
+          )}
         </div>
       </div>
     </div>

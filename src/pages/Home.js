@@ -20,12 +20,16 @@ function Home({ favoriteBooks, addToFavorites }) {
       <SearchContainer
         setSearchResultsVisible={setSearchResultsVisible}
         setSearchResults={setSearchResults}
+        favoriteBooks={favoriteBooks}
+        addToFavorites={addToFavorites}
       />
       <main>
         {searchResultsVisible && (
           <SearchResults
             searchResults={searchResults}
             onClose={closeSearchResults}
+            favoriteBooks={favoriteBooks}
+            addToFavorites={addToFavorites}
           />
         )}
         {!searchResultsVisible && (

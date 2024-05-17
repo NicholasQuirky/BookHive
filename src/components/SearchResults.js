@@ -1,11 +1,20 @@
-import React, { useState, useContext } from 'react';
-import { FavoritesContext } from '../context/FavoritesContext';
-import PopupDialog from './PopupDialog';
-import './SearchResults.css';
+import React, { useState, useContext } from "react";
+import { FavoritesContext } from "../context/FavoritesContext";
+import PopupDialog from "./PopupDialog";
+import "./SearchResults.css";
+import CollectionCover from "../images/BookCover.png";
+import SeeMoreButton from "./SeeMoreButton";
 
-const SearchResults = ({ searchResults, onClose }) => {
+const SearchResults = ({
+  searchResults,
+  setSearchResults,
+  searchQuery,
+  onClose,
+  addToFavorites,
+  favoriteBooks,
+}) => {
   const [clickedBook, setClickedBook] = useState(null);
-  const { addBookToFavorites } = useContext(FavoritesContext);
+  const [page, setPage] = useState(1);
 
   const handleBookClick = (book) => {
     setClickedBook(book);
@@ -17,7 +26,7 @@ const SearchResults = ({ searchResults, onClose }) => {
 
   const handleAddToFavorites = () => {
     if (clickedBook) {
-      addBookToFavorites(clickedBook);
+      addToFavorites(clickedBook);
       setClickedBook(null);
     }
   };
@@ -38,10 +47,7 @@ const SearchResults = ({ searchResults, onClose }) => {
             onClick={() => handleBookClick(book)}
           >
             <img
-              src={
-                book.volumeInfo.imageLinks?.thumbnail ||
-                'path_to_placeholder_image'
-              }
+              src={book.volumeInfo.imageLinks?.thumbnail || CollectionCover}
               alt={book.volumeInfo.title}
             />
             <div className="SearchResultBookInfo">
@@ -63,6 +69,12 @@ const SearchResults = ({ searchResults, onClose }) => {
           onAddToFavorites={handleAddToFavorites}
         />
       )}
+      <SeeMoreButton
+        query={searchQuery}
+        page={page}
+        setBooks={setSearchResults}
+        setPage={setPage}
+      />
     </div>
   );
 };

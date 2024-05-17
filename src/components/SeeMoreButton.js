@@ -1,5 +1,5 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 const SeeMoreButton = ({ query, page, setBooks, setPage }) => {
   const fetchMoreBooks = async () => {
@@ -11,7 +11,7 @@ const SeeMoreButton = ({ query, page, setBooks, setPage }) => {
       setBooks((prevBooks) => [...prevBooks, ...response.data.items]);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
-      console.error('Error fetching more books:', error);
+      console.error("Error fetching more books:", error);
     }
   };
 
