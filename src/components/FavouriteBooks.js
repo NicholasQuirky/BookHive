@@ -57,8 +57,7 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
           <button onClick={() => handleSortChange("recent")}>Recently Added</button>
           <button onClick={() => handleSortChange("title")}>Title</button>
           <button onClick={() => handleSortChange("author")}>Author</button>
-        </div>
-        <div className="FilterByCategory">
+          <div className="FilterByCategory">
           <span className="FilterLabel">Filter By Category:</span>
           <select value={filter} onChange={(e) => setFilter(e.target.value)} className="CategoryDropdown">
             {categories.map((category, index) => (
@@ -67,6 +66,7 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
               </option>
             ))}
           </select>
+        </div>
         </div>
       </div>
       <div className="FavouriteBooks">
