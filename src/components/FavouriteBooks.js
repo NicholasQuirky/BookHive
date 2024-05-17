@@ -1,19 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BookCover from "../images/BookCover.png";
 
 function FavouriteBooks({ favoriteBooks, addToFavorites }) {
-  console.log("Favorite books:", favoriteBooks); // Debugging line to check props
+  const [filter, setFilter] = useState("All");
+  const [categories, setCategories] = useState(["All"]);
+
+  useEffect(() => {
+    // Extract unique categories from favoriteBooks
+    const uniqueCategories = new Set();
+    favoriteBooks.forEach(book => {
+      if (book.volumeInfo.categories) {
+        book.volumeInfo.categories.forEach(category => uniqueCategories.add(category));
+      }
+    });
+
+    // Convert the Set to an array and add "All" at the beginning
+    setCategories(["All", ...Array.from(uniqueCategories)]);
+  }, [favoriteBooks]);
+
+  const filteredBooks = favoriteBooks.filter(book => {
+    if (filter === "All") return true;
+    return book.volumeInfo.categories?.includes(filter);
+  });
+
   return (
     <div className="FavouriteBooksContainer">
       <h4>Favourite Books</h4>
-      <div className="SortByOptions-FavouriteBooks">
-        <span>Sort By:</span>
-        <button>Recently Added</button>
-        <button>Title</button>
-        <button>Author</button>
+      <div className="OptionsContainer">
+        <div className="SortByOptions-FavouriteBooks">
+          <span>Sort By:</span>
+          <button>Recently Added</button>
+          <button>Title</button>
+          <button>Author</button>
+        <div className="FilterByCategory">
+          <span className="FilterLabel">Filter By Category:</span>
+          <select value={filter} onChange={(e) => setFilter(e.target.value)} className="CategoryDropdown">
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>  
+        </div>
       </div>
       <div className="FavouriteBooks">
-        {favoriteBooks.map((book, index) => (
+        {filteredBooks.map((book, index) => (
           <div key={index} className="FavouriteBook">
             <img
               src={book.volumeInfo.imageLinks?.thumbnail || BookCover}

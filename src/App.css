@@ -553,3 +553,12 @@ body {
 .SortByOptions-FavouriteBooks button:hover {
   background-color: #7f5539;
 }
+
+.FilterLabel {
+  margin-left: 50px;
+}
+
+.CategoryDropdown {
+  padding: 5px;
+  font-size: 16px;
+}
