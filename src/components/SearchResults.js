@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { FavoritesContext } from "../context/FavoritesContext";
+import React, { useState } from "react";
 import PopupDialog from "./PopupDialog";
 import "./SearchResults.css";
 import CollectionCover from "../images/BookCover.png";
@@ -11,7 +10,7 @@ const SearchResults = ({
   searchQuery,
   onClose,
   addToFavorites,
-  favoriteBooks,
+  removeFromFavorites,
 }) => {
   const [clickedBook, setClickedBook] = useState(null);
   const [page, setPage] = useState(1);
@@ -27,6 +26,13 @@ const SearchResults = ({
   const handleAddToFavorites = () => {
     if (clickedBook) {
       addToFavorites(clickedBook);
+      setClickedBook(null);
+    }
+  };
+
+  const handleUnfavorite = () => {
+    if (clickedBook) {
+      removeFromFavorites(clickedBook);
       setClickedBook(null);
     }
   };
@@ -67,6 +73,7 @@ const SearchResults = ({
           book={clickedBook}
           onClose={handleCloseDialog}
           onAddToFavorites={handleAddToFavorites}
+          onUnfavorite={handleUnfavorite} // Pass handleUnfavorite function
         />
       )}
       <SeeMoreButton

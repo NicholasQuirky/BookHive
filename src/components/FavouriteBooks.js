@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
 import BookCover from "../images/BookCover.png";
+import ValidationDialog from "./ValidationDialog"; // Import the validation dialog component
 
-function FavouriteBooks({ favoriteBooks, addToFavorites }) {
+function FavouriteBooks({
+  favoriteBooks,
+  addToFavorites,
+  removeFromFavorites,
+}) {
   const [sortOrder, setSortOrder] = useState("recent");
   const [filter, setFilter] = useState("All");
   const [categories, setCategories] = useState(["All"]);
+  const [selectedBook, setSelectedBook] = useState(null); // State for selected book
+  const [isDialogOpen, setIsDialogOpen] = useState(false); // State for dialog visibility
 
   useEffect(() => {
     // Extract unique categories from favoriteBooks
     const uniqueCategories = new Set();
     favoriteBooks.forEach((book) => {
       if (book.volumeInfo.categories) {
-        book.volumeInfo.categories.forEach((category) => uniqueCategories.add(category));
+        book.volumeInfo.categories.forEach((category) =>
+          uniqueCategories.add(category)
+        );
       }
     });
 
@@ -32,6 +41,7 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
           return authorA.localeCompare(authorB);
         });
       case "recent":
+        return [...books].reverse(); // Reverse the array to get the opposite order
       default:
         return books; // Assuming favoriteBooks is already in "Recently Added" order
     }
@@ -48,30 +58,57 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
 
   const sortedBooks = sortBooks([...filteredBooks], sortOrder);
 
+  const handleBookClick = (book) => {
+    setSelectedBook(book);
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedBook(null);
+  };
+
+  const handleUnfavorite = () => {
+    if (selectedBook) {
+      removeFromFavorites(selectedBook); // Call the function to remove from favorites
+      closeDialog(); // Close the dialog after removing from favorites
+    }
+  };
+
   return (
     <div className="FavouriteBooksContainer">
       <h4>Favourite Books</h4>
       <div className="OptionsContainer">
         <div className="SortByOptions-FavouriteBooks">
           <span>Sort By:</span>
-          <button onClick={() => handleSortChange("recent")}>Recently Added</button>
+          <button onClick={() => handleSortChange("recent")}>
+            Recently Added
+          </button>
           <button onClick={() => handleSortChange("title")}>Title</button>
           <button onClick={() => handleSortChange("author")}>Author</button>
           <div className="FilterByCategory">
-          <span className="FilterLabel">Filter By Category:</span>
-          <select value={filter} onChange={(e) => setFilter(e.target.value)} className="CategoryDropdown">
-            {categories.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
+            <span className="FilterLabel">Filter By Category:</span>
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="CategoryDropdown"
+            >
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <div className="FavouriteBooks">
         {sortedBooks.map((book, index) => (
-          <div key={index} className="FavouriteBook">
+          <div
+            key={index}
+            className="FavouriteBook"
+            onClick={() => handleBookClick(book)}
+          >
             <img
               src={book.volumeInfo.imageLinks?.thumbnail || BookCover}
               alt={book.volumeInfo.title}
@@ -88,6 +125,13 @@ function FavouriteBooks({ favoriteBooks, addToFavorites }) {
           </div>
         ))}
       </div>
+      {isDialogOpen && selectedBook && (
+        <ValidationDialog
+          book={selectedBook}
+          onClose={closeDialog}
+          onUnfavorite={handleUnfavorite}
+        />
+      )}
     </div>
   );
 }

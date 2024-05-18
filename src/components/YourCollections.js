@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import CollectionCover from "../images/BookCover.png";
 
 const YourCollections = ({ addToFavorites }) => {
@@ -17,7 +19,13 @@ const YourCollections = ({ addToFavorites }) => {
         <span>Sort By:</span>
         <button>Recently Added</button>
         <button>Title</button>
+        <div className="AddtoCollections-YourCollections">
+          <button>
+            <FontAwesomeIcon icon={faPlus} /> {/* Add icon */}
+          </button>
+        </div>
       </div>
+
       <div className="YourCollections">
         {yourCollectionsData.map((collection, index) => (
           <div key={index} className="YourCollection">

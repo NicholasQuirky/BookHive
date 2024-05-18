@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import YourLibrary from "./pages/YourLibrary";
+import SearchResults from "./components/SearchResults"; // Import SearchResults component
 import { FavoritesProvider } from "./context/FavoritesContext";
 
 function App() {
@@ -11,6 +12,12 @@ function App() {
   const addToFavorites = (book) => {
     console.log("Adding to favorites:", favoriteBooks);
     setFavoriteBooks((prevFavoriteBooks) => [...prevFavoriteBooks, book]);
+  };
+
+  const removeFromFavorites = (bookToRemove) => {
+    setFavoriteBooks((prevFavoriteBooks) =>
+      prevFavoriteBooks.filter((book) => book !== bookToRemove)
+    );
   };
 
   return (
@@ -24,6 +31,7 @@ function App() {
                 <Home
                   favoriteBooks={favoriteBooks}
                   addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
                 />
               }
             />
@@ -33,6 +41,7 @@ function App() {
                 <Home
                   favoriteBooks={favoriteBooks}
                   addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
                 />
               }
             />
@@ -42,6 +51,21 @@ function App() {
                 <YourLibrary
                   favoriteBooks={favoriteBooks}
                   addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
+                />
+              }
+            />
+            <Route // Add Route for SearchResults
+              path="/Search"
+              element={
+                <SearchResults
+                  searchResults={[]} // Pass empty array as initial search results
+                  setSearchResults={() => {}} // Placeholder for setSearchResults
+                  searchQuery=""
+                  onClose={() => {}} // Placeholder for onClose function
+                  addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
+                  favoriteBooks={favoriteBooks}
                 />
               }
             />

@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import YourCollections from "../components/YourCollections";
 import FavouriteBooks from "../components/FavouriteBooks";
 
-function YourLibrary({ favoriteBooks, addToFavorites }) {
+function YourLibrary({ favoriteBooks, addToFavorites, removeFromFavorites }) {
   return (
     <div>
       <Navbar />
@@ -11,6 +11,7 @@ function YourLibrary({ favoriteBooks, addToFavorites }) {
       <FavouriteBooks
         favoriteBooks={favoriteBooks}
         addToFavorites={addToFavorites}
+        removeFromFavorites={removeFromFavorites}
       />
     </div>
   );

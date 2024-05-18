@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
 body {
   margin: 0;
@@ -68,7 +67,6 @@ body {
   cursor: pointer;
 }
 
-
 /* Search Component Styles */
 .search-container {
   position: relative;
@@ -76,8 +74,8 @@ body {
 
 .background-image {
   width: 100%;
-  height: 500px; 
-  object-fit: cover; 
+  height: 500px;
+  object-fit: cover;
 }
 
 .search-overlay {
@@ -108,7 +106,7 @@ body {
 }
 
 .search-button {
-  background-color: #9c6644; 
+  background-color: #9c6644;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -116,11 +114,9 @@ body {
   cursor: pointer;
 }
 
-.search-button:hover{
+.search-button:hover {
   background-color: #7f5539;
 }
-
-
 
 /* Suggested Books */
 .SuggestedBooksContainer {
@@ -128,7 +124,7 @@ body {
   padding: 50px;
   padding-top: 2px;
   border-radius: 20px;
-  background-color: #E6CCB2;
+  background-color: #e6ccb2;
   margin: 30px;
 }
 
@@ -140,7 +136,7 @@ body {
 .SuggestedBooks {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-gap: 20px; 
+  grid-gap: 20px;
   justify-content: center;
 }
 
@@ -180,7 +176,8 @@ body {
   font-weight: 400;
 }
 
-.SuggestedBookInfo, .SuggestedBookAuthor {
+.SuggestedBookInfo,
+.SuggestedBookAuthor {
   color: black;
 }
 
@@ -202,24 +199,24 @@ body {
   z-index: 1000;
   width: max-content;
   text-align: center;
-  max-height: 80vh; 
-  overflow: auto; 
+  max-height: 80vh;
+  overflow: auto;
 }
 
 .PopupContent {
   display: flex;
   align-items: flex-start;
-  width: max-content; 
+  width: max-content;
 }
 
-.PopupLeftColumn{
+.PopupLeftColumn {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: max-content;
   border-radius: 10px;
   padding: 20px;
-  background-color: #B08968;
+  background-color: #b08968;
 }
 
 .PopupContent .PopupLeftColumn img {
@@ -239,11 +236,11 @@ body {
   font-size: 30px;
   color: #ff0000;
   background: none;
-  transition: transform 0.4s; 
+  transition: transform 0.4s;
 }
 
 .CloseButton:hover {
- transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .DialogTitle {
@@ -283,8 +280,9 @@ body {
   padding-top: 0px;
 }
 
-.AddToFavoritesButton, .SeeMoreButton {
-  background-color: #B08968;
+.AddToFavoritesButton,
+.SeeMoreButton {
+  background-color: #b08968;
   border: none;
   border-radius: 10px;
   color: white;
@@ -294,30 +292,29 @@ body {
   font-size: 16px;
   padding: 10px 20px;
   border-radius: 5px;
-  align-self: center; 
+  align-self: center;
   margin-top: 20px;
   cursor: pointer;
 }
 
-.SeeMoreButton{
+.SeeMoreButton {
   margin-top: 30px;
 }
 
 .AddToFavoritesButton:hover {
-  background-color: #7F5539;
+  background-color: #7f5539;
 }
 
 .SeeMoreButton:hover {
-  background-color: #7F5539;
+  background-color: #7f5539;
 }
-
 
 /*popular books */
 .PopularBooksContainer {
   padding: 50px;
   padding-top: 2px;
   border-radius: 20px;
-  background-color: #E6CCB2;
+  background-color: #e6ccb2;
   margin: 30px;
 }
 
@@ -329,7 +326,7 @@ body {
 .PopularBooks {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 20px; 
+  gap: 20px;
   justify-content: center;
 }
 
@@ -369,10 +366,10 @@ body {
   font-weight: 400;
 }
 
-.PopularBookInfo, .PopularBookAuthor {
+.PopularBookInfo,
+.PopularBookAuthor {
   color: black;
 }
-
 
 /* Your Collections*/
 
@@ -380,7 +377,7 @@ body {
   padding: 50px;
   padding-top: 2px;
   border-radius: 20px;
-  background-color: #E6CCB2;
+  background-color: #e6ccb2;
   margin: 30px;
 }
 
@@ -392,7 +389,7 @@ body {
 .YourCollections {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 20px; 
+  gap: 20px;
   justify-content: center;
 }
 
@@ -425,11 +422,9 @@ body {
   margin: 0;
 }
 
-
 .YourCollectionInfo {
   color: black;
 }
-
 
 .SortByOptions-YourCollections {
   display: flex;
@@ -465,7 +460,7 @@ body {
   padding: 50px;
   padding-top: 2px;
   border-radius: 20px;
-  background-color: #E6CCB2;
+  background-color: #e6ccb2;
   margin: 30px;
 }
 
@@ -477,7 +472,7 @@ body {
 .FavouriteBooks {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 20px; 
+  gap: 20px;
   justify-content: center;
 }
 
@@ -546,6 +541,24 @@ body {
 }
 
 .SortByOptions-FavouriteBooks button:hover {
+  background-color: #7f5539;
+}
+
+.AddtoCollections-YourCollections {
+  margin-right: 10px;
+  margin-left: 1300px;
+  border-radius: 5px;
+  justify-content: flex-end; /* Align items to the right */
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.AddtoCollections-YourCollections button:hover {
   background-color: #7f5539;
 }
 
