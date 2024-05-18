@@ -1,8 +1,34 @@
-import React from "react";
-// import './PopupDialog.css';
+import React, { useState } from "react";
 
-const PopupDialog = ({ book, onClose, onAddToFavorites }) => {
-  if (!book) return null;
+const PopupDialog = ({ book, onClose, onAddToFavorites, onAddToCollections }) => {
+  const [collections, setCollections] = useState([]); // State to manage collections
+  const [showDropdown, setShowDropdown] = useState(false); // State to toggle dropdown menu
+
+  // Sample collections data (replace with your actual collections data)
+  const sampleCollections = [
+    { name: "Collection 1", books: [] },
+    { name: "Collection 2", books: [] },
+    { name: "Collection 3", books: [] },
+  ];
+
+  // Function to add a book to a selected collection
+  const addToCollection = (collectionName) => {
+    const updatedCollections = collections.map((collection) => {
+      if (collection.name === collectionName) {
+        return {
+          ...collection,
+          books: [...collection.books, book],
+        };
+      }
+      return collection;
+    });
+    setCollections(updatedCollections);
+  };
+
+  // Function to handle adding to collections
+  const handleAddToCollections = () => {
+    setShowDropdown(!showDropdown); // Toggle dropdown visibility
+  };
 
   return (
     <div className="PopupDialog">
@@ -29,11 +55,23 @@ const PopupDialog = ({ book, onClose, onAddToFavorites }) => {
           <p className="DialogDescription">
             {book.volumeInfo.description || "No description available"}
           </p>
-          {onAddToFavorites && (
-            <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
-              Add to Favorites
+          <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
+            Add to Favorites
+          </button>
+          <div className="DropDownMenu">
+            <button className="AddToCollectionsButton" onClick={handleAddToCollections}>
+              Add to Collections
             </button>
-          )}
+            {showDropdown && (
+              <div className="DropdownContent">
+                {sampleCollections.map((collection) => (
+                  <button key={collection.name} onClick={() => addToCollection(collection.name)}>
+                    {collection.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

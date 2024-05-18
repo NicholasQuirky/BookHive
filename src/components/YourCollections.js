@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import CollectionCover from "../images/BookCover.png";
+import CreateCollection from "./CreateCollection";
+import CollectionView from "./CollectionView";
 
 const YourCollections = ({ addToFavorites }) => {
-  const yourCollectionsData = [
-    { title: "Collection 1", image: CollectionCover },
-    { title: "Collection 2", image: CollectionCover },
-    { title: "Collection 3", image: CollectionCover },
-    { title: "Collection 4", image: CollectionCover },
-    { title: "Collection 5", image: CollectionCover },
-  ];
+  const [collections, setCollections] = useState([]);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState(null);
+
+  const handleCreateCollection = (collectionName) => {
+    const newCollection = {
+      name: collectionName,
+      photo: CollectionCover,
+      books: [] // Initialize an empty array for storing books
+    };
+    setCollections([...collections, newCollection]);
+  };
+
+  const handleViewCollection = (collection) => {
+    setSelectedCollection(collection);
+  };
+
+  const handleCloseCollectionView = () => {
+    setSelectedCollection(null);
+  };
 
   return (
     <div className="YourCollectionsContainer">
@@ -20,22 +35,32 @@ const YourCollections = ({ addToFavorites }) => {
         <button>Recently Added</button>
         <button>Title</button>
         <div className="AddtoCollections-YourCollections">
-          <button>
-            <FontAwesomeIcon icon={faPlus} /> {/* Add icon */}
+          <button onClick={() => setIsPopupOpen(true)}>
+            <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
       </div>
 
       <div className="YourCollections">
-        {yourCollectionsData.map((collection, index) => (
-          <div key={index} className="YourCollection">
-            <img src={collection.image} alt={collection.title} />
+        {collections.map((collection, index) => (
+          <div key={index} className="YourCollection" onClick={() => handleViewCollection(collection)}>
+            <img src={collection.photo} alt={collection.name} />
             <div className="YourCollectionInfo">
-              <h3 className="CollectionTitle">{collection.title}</h3>
+              <h3 className="CollectionTitle">{collection.name}</h3>
             </div>
           </div>
         ))}
       </div>
+
+      <CreateCollection
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        onCreateCollection={handleCreateCollection}
+      />
+
+      {selectedCollection && (
+        <CollectionView collection={selectedCollection} onClose={handleCloseCollectionView} />
+      )}
     </div>
   );
 };

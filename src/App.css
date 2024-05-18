@@ -185,7 +185,7 @@ body {
   font-weight: 700;
 }
 
-/* Popup */
+/* Popup View Book */
 .PopupDialog {
   position: fixed;
   top: 50%;
@@ -309,6 +309,25 @@ body {
   background-color: #7f5539;
 }
 
+.AddToCollectionsButton {
+  background-color: #b08968;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  align-self: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.AddToCollectionsButton:hover {
+  background-color: #7f5539;
+}
+
 /*popular books */
 .PopularBooksContainer {
   padding: 50px;
@@ -374,6 +393,7 @@ body {
 /* Your Collections*/
 
 .YourCollectionsContainer {
+  position: relative; /* Ensure the container is positioned relatively */
   padding: 50px;
   padding-top: 2px;
   border-radius: 20px;
@@ -545,17 +565,8 @@ body {
 }
 
 .AddtoCollections-YourCollections {
-  margin-right: 10px;
-  margin-left: 1300px;
-  border-radius: 5px;
-  justify-content: flex-end; /* Align items to the right */
-  display: flex;
-  border: none;
-  border-radius: 5px;
-  color: rgb(0, 0, 0);
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  position: absolute;
+  right: 50px;
 }
 
 .AddtoCollections-YourCollections button:hover {
@@ -569,4 +580,112 @@ body {
 .CategoryDropdown {
   padding: 5px;
   font-size: 16px;
+}
+
+/* Create Collection */
+
+.PopupDialog-CreateCollection {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: max-content;
+  text-align: center;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.CloseButton-CreateCollection {
+  position: absolute;
+  border: none;
+  top: 10px;
+  right: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+  color: #ff0000;
+  background: none;
+  transition: transform 0.4s;
+}
+
+.CloseButton-CreateCollection:hover {
+  transform: scale(1.1);
+}
+
+.PopupDialog-CreateCollection input[type="text"] {
+  font-size: 16px;
+  height: 28px;
+  width: 300px;
+  margin: 10px;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 20px;
+}
+
+.PopupDialog-CreateCollection button {
+  background-color: #b08968;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.PopupDialog-CreateCollection button:hover {
+  background-color: #7f5539;
+}
+
+/* Collection View */
+
+.CollectionView {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.CollectionView .CloseButton-CollectionView {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #ff0000;
+}
+
+.CollectionView h2,
+.CollectionView p { /* Apply black color to both headings and paragraphs */
+  color: black;
+}
+
+.CollectionView .CollectionBooks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.CollectionView .CollectionBook img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.CollectionView .CollectionBook h3,
+.CollectionView .CollectionBook p {
+  color: black;
 }
