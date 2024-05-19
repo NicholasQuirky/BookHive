@@ -14,16 +14,20 @@ const CreateCollection = ({ isOpen, onClose, onCreateCollection }) => {
   return (
     isOpen && (
       <div className="PopupDialog-CreateCollection">
-        <span className="CloseButton-CreateCollection" onClick={onClose}>
-          X
-        </span>
-        <input
-          type="text"
-          placeholder="Enter collection name"
-          value={newCollectionName}
-          onChange={(e) => setNewCollectionName(e.target.value)}
-        />
-        <button onClick={handleCreateCollection}>Done</button>
+        <div className="CreateCollectionContent">
+          <span className="CloseButton-CreateCollection" onClick={onClose}>
+            X
+          </span>
+          <div className="CreateCollectionSeparator">
+            <input
+              type="text"
+              placeholder="Enter collection name"
+              value={newCollectionName}
+              onChange={(e) => setNewCollectionName(e.target.value)}
+            />
+          </div>
+          <button onClick={handleCreateCollection}>Done</button>
+        </div>
       </div>
     )
   );

@@ -627,13 +627,10 @@ body {
   background-color: #b08968;
 }
 
-.AddtoCollections-YourCollections {
-  position: absolute;
-  right: 50px;
-}
+
 
 .AddtoCollections-YourCollections button:hover {
-  background-color: #7f5539;
+  background-color: #b08968;
 }
 
 .FilterLabel {
@@ -648,31 +645,46 @@ body {
 /* Create Collection */
 
 .PopupDialog-CreateCollection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  width: max-content;
+  max-width: 1032px;
   text-align: center;
   max-height: 80vh;
   overflow: auto;
 }
 
+@media (max-width: 600px) {
+  .PopupDialog-CreateCollection {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+  } 
+}
+
+.CreateCollectionSeparator {
+  padding: 0px;
+}
+
 .CloseButton-CreateCollection {
-  position: absolute;
+  position: fixed;
   border: none;
-  top: 10px;
-  right: 14px;
+  top: 2px;
+  right: 10px;
   cursor: pointer;
   font-weight: bold;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 30px;
   color: #ff0000;
   background: none;
   transition: transform 0.4s;
@@ -694,6 +706,7 @@ body {
 }
 
 .PopupDialog-CreateCollection button {
+  height: 40px;
   background-color: #b08968;
   border: none;
   border-radius: 5px;
@@ -819,4 +832,5 @@ body {
   .FavouriteBooksContainer {
     padding: 20px;
   }
+
 }
