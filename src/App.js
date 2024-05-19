@@ -14,7 +14,7 @@ const generateUniqueId = () => {
 function App() {
   const [favoriteBooks, setFavoriteBooks] = useState([]);
   const [collections, setCollections] = useState([]);
-
+  const [addToCollection, setaddToCollection] = useState([]);
   const addToFavorites = (book) => {
     console.log("Adding to favorites:", book);
     setFavoriteBooks((prevFavoriteBooks) => [...prevFavoriteBooks, book]);
@@ -50,6 +50,7 @@ function App() {
                   removeFromFavorites={removeFromFavorites}
                   collections={collections}
                   setCollections={setCollections}
+                  addToCollection={addToCollection}
                 />
               }
             />
@@ -63,6 +64,7 @@ function App() {
                   collections={collections}
                   setCollections={setCollections}
                   handleCreateCollection={handleCreateCollection}
+                  addToCollection={addToCollection}
                 />
               }
             />
@@ -79,6 +81,7 @@ function App() {
                   favoriteBooks={favoriteBooks}
                   setCollections={setCollections}
                   handleCreateCollection={handleCreateCollection}
+                  addToCollection={addToCollection}
                 />
               }
             />

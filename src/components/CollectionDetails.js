@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import BookDetailsPopup from "./BookDetailsPopup";
-import CollectionCover from "../images/CollectionCover.png";
+import BookDetailsPopup from "./BookDetailsPopup"; // Import BookDetailsPopup component
 
 const CollectionDetails = ({
   collection,
   onClose,
-  onCollectionUpdate,
-  collections, // Add collections prop
-  setCollections, // Add setCollections prop
+  collections,
+  setCollections,
 }) => {
   const [selectedBook, setSelectedBook] = useState(null);
 
@@ -17,18 +15,6 @@ const CollectionDetails = ({
 
   const handleCloseDialog = () => {
     setSelectedBook(null);
-  };
-
-  const handleRemoveBook = () => {
-    const updatedBooks = collection.books.filter(
-      (book) => book.id !== selectedBook.id
-    );
-    const updatedCollection = {
-      ...collection,
-      books: updatedBooks,
-    };
-    onCollectionUpdate(updatedCollection);
-    handleCloseDialog();
   };
 
   return (
@@ -42,7 +28,10 @@ const CollectionDetails = ({
             className="SearchResultBook"
             onClick={() => handleBookClick(book)}
           >
-            <img src={book.image || CollectionCover} alt={book.title} />
+            <img
+              src={book.image || "../images/BookCover.png"}
+              alt={book.title}
+            />
             <div className="SearchResultBookInfo">
               <h3 className="SearchResultBookTitle">{book.title}</h3>
               <p className="SearchResultBookAuthor">
@@ -56,7 +45,6 @@ const CollectionDetails = ({
         <BookDetailsPopup
           book={selectedBook}
           onClose={handleCloseDialog}
-          onRemoveFromCollection={handleRemoveBook}
           collections={collections} // Pass collections prop
           setCollections={setCollections} // Pass setCollections prop
         />

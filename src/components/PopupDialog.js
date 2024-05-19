@@ -8,7 +8,9 @@ const PopupDialog = ({
   onUnfavorite,
   collections,
   setCollections,
-  collectionId, // Pass collectionId prop
+  collectionId,
+
+  // Pass collectionId prop
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(null); // State to store selected collection

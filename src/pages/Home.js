@@ -5,7 +5,13 @@ import PopularBooks from "../components/PopularBooks";
 import SearchContainer from "../components/SearchContainer";
 import SearchResults from "../components/SearchResults";
 
-function Home({ favoriteBooks, addToFavorites, collections, setCollections }) {
+function Home({
+  favoriteBooks,
+  addToFavorites,
+  collections,
+  setCollections,
+  addToCollection,
+}) {
   const [searchResults, setSearchResults] = useState([]);
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
 
@@ -34,6 +40,7 @@ function Home({ favoriteBooks, addToFavorites, collections, setCollections }) {
             addToFavorites={addToFavorites}
             collections={collections} // Pass collections prop
             setCollections={setCollections} // Pass setCollections prop
+            addToCollection={addToCollection}
           />
         )}
         {!searchResultsVisible && (
@@ -43,12 +50,14 @@ function Home({ favoriteBooks, addToFavorites, collections, setCollections }) {
               addToFavorites={addToFavorites}
               collections={collections}
               setCollections={setCollections}
+              addToCollection={addToCollection}
             />
             <PopularBooks
               favoriteBooks={favoriteBooks}
               addToFavorites={addToFavorites}
               collections={collections} // Pass collections prop
               setCollections={setCollections} // Pass setCollections prop
+              addToCollection={addToCollection}
             />
           </>
         )}

@@ -14,6 +14,7 @@ const SearchResults = ({
   removeFromFavorites,
   collections,
   setCollections,
+  addToCollection,
 }) => {
   const [clickedBook, setClickedBook] = useState(null);
   const [page, setPage] = useState(1);
@@ -86,6 +87,7 @@ const SearchResults = ({
           onUnfavorite={handleUnfavorite}
           collections={collections}
           setCollections={setCollections}
+          addToCollection={addToCollection}
         />
       )}
       <SeeMoreButton
