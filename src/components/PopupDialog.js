@@ -68,13 +68,15 @@ const PopupDialog = ({ book, onClose, onAddToFavorites, collections, setCollecti
               <p className="DialogDescription">
                 {book.volumeInfo.description || "No description available"}
               </p>
-              <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
-                Add to Favorites
-              </button>
-              <div className="DropDownMenu">
-                <button className="AddToCollectionsButton" onClick={handleAddToCollections}>
-                  Add to Collections
+              <div className="PopupButtonHolder">
+                <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
+                  Add to Favorites
                 </button>
+                <div className="DropDownMenu">
+                  <button className="AddToCollectionsButton" onClick={handleAddToCollections}>
+                    Add to Collections
+                  </button>
+              </div>
                 {showDropdown && renderDropdownContent()}
               </div>
             </>
