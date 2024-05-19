@@ -39,17 +39,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route
-              path="/"
-              element={
-                <Home
-                  favoriteBooks={favoriteBooks}
-                  addToFavorites={addToFavorites}
-                  removeFromFavorites={removeFromFavorites}
-                />
-              }
-            />
-            <Route
-              path="/Home"
+              index // route "/"
               element={
                 <Home
                   favoriteBooks={favoriteBooks}

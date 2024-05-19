@@ -4,7 +4,7 @@ import BookhiveLogo from "../images/BookhiveLogo.png";
 
 const Navbar = () => {
   const navItems = [
-    { text: "Home", link: "/Home" },
+    { text: "Home", link: "/" },
     { text: "Your Library", link: "/YourLibrary" },
   ];
 
