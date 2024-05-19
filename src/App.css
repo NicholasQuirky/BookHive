@@ -753,5 +753,70 @@ body {
   color: black;
 }
 
-.DeleteCollection {
+@media only screen and (max-width: 600px) {
+  .Navbar {
+    flex-direction:column;
+    padding: 10px;
+    background: #9c6644;
+    height: 80px;
+  }
+
+  .Navbar ul {
+    margin-right: 0;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .Navbar a {
+    width: 100%;
+    text-align: center;
+    height: 0px;
+  }
+
+  .Navbar-logo {
+    margin-bottom: 2px;
+  }
+  
+  .search-bar input {
+    width: calc(100% - 20px);
+  }
+
+  .SuggestedBooks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .SuggestedBook {
+    padding: 5px;
+  }
+
+  .YourCollections,
+  .PopularBooks,
+  .FavouriteBooks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .YourCollection,
+  .PopularBook,
+  .FavouriteBook {
+    padding: 5px;
+  }
+
+  .SortByOptions-YourCollections,
+  .SortByOptions-FavouriteBooks,
+  .SortByOptions-PopularBooks {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .SortByOptions-YourCollections button,
+  .SortByOptions-FavouriteBooks button,
+  .SortByOptions-PopularBooks button {
+    margin: 5px 0;
+  }
+
+  .YourCollectionsContainer,
+  .PopularBooksContainer,
+  .FavouriteBooksContainer {
+    padding: 20px;
+  }
 }
