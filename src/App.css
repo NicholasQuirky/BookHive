@@ -260,6 +260,11 @@ body {
   margin: 0%;
 }
 
+.PopupButtonHolder{
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .PopupRightColumn {
   position: relative;
   width: 500px;
@@ -282,7 +287,6 @@ body {
 
 .AddToFavoritesButton,
 .SeeMoreButton {
-  background-color: #b08968;
   border: none;
   border-radius: 10px;
   color: white;
@@ -295,14 +299,19 @@ body {
   align-self: center;
   margin-top: 20px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .SeeMoreButton {
   margin-top: 30px;
+  background-color: #b08968;
 }
 
+.AddToFavoritesButton{
+  background-color: rgb(16, 152, 16);
+}
 .AddToFavoritesButton:hover {
-  background-color: #7f5539;
+  background-color: rgb(13, 109, 13);
 }
 
 .SeeMoreButton:hover {
@@ -322,6 +331,7 @@ body {
   align-self: center;
   margin-top: 20px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .AddToCollectionsButton:hover {

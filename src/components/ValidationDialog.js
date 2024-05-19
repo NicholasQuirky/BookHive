@@ -8,29 +8,36 @@ const ValidationDialog = ({ book, onClose, onConfirm, onUnfavorite }) => {
     <div className="ValidationDialogOverlay">
       <div className="ValidationDialog">
         <div className="ValidationDialogContent">
-          {/* Close button */}
-          <span className="CloseButton" onClick={onClose}>
-            &times;
-          </span>
-          {/* Dialog message */}
-          <div className="ValidationDialogMessage">
-            <p>
-              <strong>{book.volumeInfo.title}</strong> by{" "}
-              <strong>
-                {book.volumeInfo.authors
-                  ? book.volumeInfo.authors.join(", ")
-                  : "Unknown"}
-              </strong>
+        <span className="CloseButton" onClick={onClose}>
+          X
+        </span>
+          <div className="ValidationDialogLeftColumn">
+            <img
+              src={
+                book.volumeInfo.imageLinks?.thumbnail || "../images/BookCover.png"
+              }
+              alt={book.volumeInfo.title}
+            />
+            <p className="DialogTitle">{book.volumeInfo.title}</p>
+            <p className="DialogAuthor">
+              By:{" "}
+              {book.volumeInfo.authors
+                ? book.volumeInfo.authors.join(", ")
+                : "Unknown"}
             </p>
           </div>
-          {/* Unfavorite and Confirm buttons */}
-          <div className="ValidationDialogActions">
-            <button onClick={onUnfavorite} className="CancelButton">
-              Unfavorite
-            </button>
-            <button onClick={onConfirm} className="ConfirmButton">
-              Add to Collection
-            </button>
+          <div className="ValidationDialogRightColumn">
+            <p className="DialogDescription">
+              {book.volumeInfo.description || "No description available"}
+            </p>
+            <div className="ValidationDialogActions">
+              <button onClick={onUnfavorite} className="CancelButton">
+                Unfavorite
+              </button>
+              <button onClick={onConfirm} className="ConfirmButton">
+                Add to Collection
+              </button>
+            </div>
           </div>
         </div>
       </div>

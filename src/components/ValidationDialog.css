@@ -18,55 +18,128 @@
   text-align: center;
   position: relative;
   z-index: 1001;
-  min-height: 140px; /* Set minimum height */
-  min-width: 500px;
+  width: max-content;
+  display: flex;
+  align-items: flex-start;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.ValidationDialogContent {
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+}
+
+.ValidationDialogLeftColumn {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center vertically */
+  align-items: center;
+  width: max-content;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #b08968;
+}
+
+.ValidationDialogContent .ValidationDialogLeftColumn img {
+  max-width: 290px;
+  height: auto;
+  border-radius: 10px;
 }
 
 .CloseButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  background: none;
   border: none;
+  top: 10px;
+  right: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ff0000;
+  background: none;
+  transition: transform 0.4s;
 }
 
-.ValidationDialogContent {
-  color: black; /* Set text color to black */
+.CloseButton:hover {
+  transform: scale(1.1);
 }
 
-.ValidationDialogMessage p {
-  margin: 0;
-  color: black; /* Ensure message text is black */
+.DialogTitle {
+  color: #010135;
+  font-size: 16px;
+  width: max-content;
+  margin: 0%;
+  margin-top: 10px;
+  font-weight: 700;
+  width: 220px;
+}
+
+.DialogAuthor {
+  color: #010135;
+  font-size: 16px;
+  width: 180px;
+  margin: 0%;
+}
+
+.ValidationDialogRightColumn {
+  position: relative;
+  width: 500px;
+  height: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.DialogDescription {
+  color: #010135;
+  font-size: 16px;
+  text-align: start;
+  margin: 0%;
+  padding: 12px;
+  padding-top: 0px;
 }
 
 .ValidationDialogActions {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 10px;
   margin-top: 20px;
 }
 
 .ConfirmButton,
 .CancelButton {
-  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  align-self: center;
+  margin-top: 20px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .ConfirmButton {
-  background-color: #4caf50;
+  background-color: #b08968;
   color: white;
-  border: none;
-  border-radius: 5px;
+}
+
+.ConfirmButton:hover {
+  background-color: #7f5539;
+
 }
 
 .CancelButton {
   background-color: #f44336;
   color: white;
-  border: none;
-  border-radius: 5px;
+}
+
+.CancelButton:hover {
+  background-color: #b83229;
 }

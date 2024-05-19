@@ -55,23 +55,25 @@ const PopupDialog = ({ book, onClose, onAddToFavorites, onAddToCollections }) =>
           <p className="DialogDescription">
             {book.volumeInfo.description || "No description available"}
           </p>
-          <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
-            Add to Favorites
-          </button>
-          <div className="DropDownMenu">
-            <button className="AddToCollectionsButton" onClick={handleAddToCollections}>
-              Add to Collections
+          <div className="PopupButtonHolder">
+            <button className="AddToFavoritesButton" onClick={onAddToFavorites}>
+              Add to Favorites
             </button>
-            {showDropdown && (
-              <div className="DropdownContent">
-                {sampleCollections.map((collection) => (
-                  <button key={collection.name} onClick={() => addToCollection(collection.name)}>
-                    {collection.name}
-                  </button>
-                ))}
+            <div className="DropDownMenu">
+              <button className="AddToCollectionsButton" onClick={handleAddToCollections}>
+                Add to Collections
+              </button>
               </div>
-            )}
-          </div>
+              {showDropdown && (
+                <div className="DropdownContent">
+                  {sampleCollections.map((collection) => (
+                    <button key={collection.name} onClick={() => addToCollection(collection.name)}>
+                      {collection.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
         </div>
       </div>
     </div>
