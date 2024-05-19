@@ -14,7 +14,6 @@ const CreateCollection = ({ isOpen, onClose, onCreateCollection }) => {
   return (
     isOpen && (
       <div className="PopupDialog-CreateCollection">
-        <div className="CreateCollectionContent">
           <span className="CloseButton-CreateCollection" onClick={onClose}>
             X
           </span>
@@ -27,7 +26,6 @@ const CreateCollection = ({ isOpen, onClose, onCreateCollection }) => {
             />
           </div>
           <button onClick={handleCreateCollection}>Done</button>
-        </div>
       </div>
     )
   );
