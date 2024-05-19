@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PopupDialog from "./PopupDialog";
 import "./SearchResults.css";
-import CollectionCover from "../images/BookCover.png";
+import CollectionCover from "../images/CollectionCover.png";
 import SeeMoreButton from "./SeeMoreButton";
 
 const SearchResults = ({
@@ -12,8 +12,8 @@ const SearchResults = ({
   onClose,
   addToFavorites,
   removeFromFavorites,
-  collections, 
-  setCollections, 
+  collections,
+  setCollections,
 }) => {
   const [clickedBook, setClickedBook] = useState(null);
   const [page, setPage] = useState(1);
@@ -28,9 +28,11 @@ const SearchResults = ({
 
   const handleAddToFavorites = () => {
     if (clickedBook) {
-      const isAlreadyAdded = favoriteBooks.some(favorite => favorite.id === clickedBook.id);
+      const isAlreadyAdded = favoriteBooks.some(
+        (favorite) => favorite.id === clickedBook.id
+      );
       if (isAlreadyAdded) {
-        alert('This book is already added to favorites.');
+        alert("This book is already added to favorites.");
       } else {
         addToFavorites(clickedBook);
         setClickedBook(null);
@@ -81,9 +83,9 @@ const SearchResults = ({
           book={clickedBook}
           onClose={handleCloseDialog}
           onAddToFavorites={handleAddToFavorites}
-          onUnfavorite={handleUnfavorite} 
-          collections={collections} 
-          setCollections={setCollections} 
+          onUnfavorite={handleUnfavorite}
+          collections={collections}
+          setCollections={setCollections}
         />
       )}
       <SeeMoreButton

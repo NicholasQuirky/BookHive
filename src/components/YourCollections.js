@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import CreateCollection from "./CreateCollection";
 import CollectionView from "./CollectionView";
-import CollectionCover from "../images/BookCover.png";
+import CollectionDetails from "./CollectionDetails";
+import CollectionCover from "../images/CollectionBackground.png";
 
-// Define generateUniqueId function
 const generateUniqueId = () => {
   return "_" + Math.random().toString(36).substr(2, 9);
 };
@@ -51,7 +51,6 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
       books: [],
     };
 
-    // Update the collections state with the new collection
     setCollections([...collections, newCollection]);
   };
 
@@ -66,7 +65,7 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
         <button onClick={() => setSortBy("title")}>Title</button>
         <div className="AddtoCollections-YourCollections">
           <button onClick={() => setIsPopupOpen(true)}>
-            <FontAwesomeIcon icon={faPlus} />
+            Create Collection <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
       </div>
@@ -96,10 +95,9 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
       />
 
       {selectedCollection && (
-        <CollectionView
+        <CollectionDetails
           collection={selectedCollection}
           onClose={handleCloseCollectionView}
-          onDelete={() => handleDeleteCollection(selectedCollection)}
         />
       )}
     </div>
