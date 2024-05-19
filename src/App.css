@@ -734,7 +734,6 @@ body {
 
 .CollectionView h2,
 .CollectionView p {
-  /* Apply black color to both headings and paragraphs */
   color: black;
 }
 
