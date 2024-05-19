@@ -328,6 +328,38 @@ body {
   background-color: #7f5539;
 }
 
+/* Dropdown Menu */
+.DropDownMenu {
+  position: relative;
+  margin-top: 10px;
+}
+
+.DropdownContent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  left: 34%;
+  min-width: 160px;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.DropdownContent button {
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.DropdownContent button:hover {
+  background-color: #b08968;
+  color: white;
+}
+
+
 /*popular books */
 .PopularBooksContainer {
   padding: 50px;
@@ -473,6 +505,23 @@ body {
 .SortByOptions-YourCollections button:hover {
   background-color: #7f5539;
 }
+
+.DeleteCollection button {
+  background-color: #ff0000; /* Red background color */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.DeleteCollection button:hover {
+  background-color: #cc0000; /* Darker red background color on hover */
+}
+
 
 /* Favourite Books*/
 

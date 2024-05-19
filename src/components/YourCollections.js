@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import CollectionCover from "../images/BookCover.png";
 import CreateCollection from "./CreateCollection";
 import CollectionView from "./CollectionView";
 
-const YourCollections = ({ addToFavorites, collections, setCollections, handleCreateCollection }) => {
+// Define generateUniqueId function
+const generateUniqueId = () => {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+const YourCollections = ({ addToFavorites, collections, setCollections }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(null);
   const [sortBy, setSortBy] = useState('recentlyAdded');
@@ -34,6 +38,18 @@ const YourCollections = ({ addToFavorites, collections, setCollections, handleCr
     handleCloseCollectionView();
   };
 
+  const handleCreateCollection = (newCollectionName) => {
+    const newCollection = {
+      id: generateUniqueId(),
+      name: newCollectionName,
+      dateAdded: new Date(),
+      books: []
+    };
+
+    // Update the collections state with the new collection
+    setCollections([...collections, newCollection]);
+  };
+
   return (
     <div className="YourCollectionsContainer">
       <h4>Your Collections</h4>
@@ -51,6 +67,7 @@ const YourCollections = ({ addToFavorites, collections, setCollections, handleCr
       <div className="YourCollections">
         {sortCollections(sortBy).map((collection, index) => (
           <div key={index} className="YourCollection" onClick={() => handleViewCollection(collection)}>
+            {/* Replace this placeholder image with the actual photo */}
             <img src={collection.photo} alt={collection.name} />
             <div className="YourCollectionInfo">
               <h3 className="CollectionTitle">{collection.name}</h3>
