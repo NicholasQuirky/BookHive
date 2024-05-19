@@ -1,4 +1,3 @@
-// ValidationDialog.js
 import React from "react";
 import "./ValidationDialog.css";
 

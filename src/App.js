@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import YourLibrary from "./pages/YourLibrary";
-import SearchResults from "./components/SearchResults"; // Import SearchResults component
+import SearchResults from "./components/SearchResults";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import CollectionCover from "./images/BookCover.png";
 
@@ -28,11 +28,10 @@ function App() {
     const newCollection = {
       name: collectionName,
       photo: CollectionCover,
-      books: [] // Initialize an empty array for storing books
+      books: []
     };
     setCollections((collections)=> [...collections, newCollection]);
   };
-
  
   return (
     <div>
@@ -72,14 +71,14 @@ function App() {
                 />
               }
             />
-            <Route // Add Route for SearchResults
+            <Route
               path="/Search"
               element={
                 <SearchResults
-                  searchResults={[]} // Pass empty array as initial search results
-                  setSearchResults={() => {}} // Placeholder for setSearchResults
+                  searchResults={[]}
+                  setSearchResults={() => {}}
                   searchQuery=""
-                  onClose={() => {}} // Placeholder for onClose function
+                  onClose={() => {}}
                   addToFavorites={addToFavorites}
                   removeFromFavorites={removeFromFavorites}
                   favoriteBooks={favoriteBooks}

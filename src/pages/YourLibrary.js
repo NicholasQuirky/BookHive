@@ -16,8 +16,6 @@ function YourLibrary({ favoriteBooks, addToFavorites, removeFromFavorites, colle
         favoriteBooks={favoriteBooks}
         addToFavorites={addToFavorites}
         removeFromFavorites={removeFromFavorites}
-        
-
       />
     </div>
   );

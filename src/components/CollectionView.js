@@ -1,6 +1,10 @@
 import React from "react";
 
-const CollectionView = ({ collection, onClose }) => {
+const CollectionView = ({ collection, onClose, onDelete }) => {
+  const handleDeleteCollection = () => {
+    onDelete(collection.id); // Assuming collection has an id
+  };
+
   return (
     <div className="CollectionView">
       <div className="PopupDialog-CollectionView">
@@ -20,6 +24,9 @@ const CollectionView = ({ collection, onClose }) => {
           ) : (
             <p>There is no book added in this collection.</p>
           )}
+        </div>
+        <div className="DeleteCollection">
+        <button onClick={handleDeleteCollection}>Delete Collection</button>
         </div>
       </div>
     </div>
