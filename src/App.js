@@ -82,6 +82,7 @@ function App() {
                   setCollections={setCollections}
                   handleCreateCollection={handleCreateCollection}
                   addToCollection={addToCollection}
+                  collections={collections}
                 />
               }
             />

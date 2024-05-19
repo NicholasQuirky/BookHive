@@ -35,9 +35,9 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
     setSelectedCollection(null);
   };
 
-  const handleDeleteCollection = (selectedCollection) => {
+  const handleDeleteCollection = (collection) => {
     const updatedCollections = collections.filter(
-      (collection) => collection !== selectedCollection
+      (col) => col.id !== collection.id
     );
     setCollections(updatedCollections);
     handleCloseCollectionView();
@@ -98,6 +98,7 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
         <CollectionDetails
           collection={selectedCollection}
           onClose={handleCloseCollectionView}
+          onDelete={handleDeleteCollection} // Pass the delete function
         />
       )}
     </div>

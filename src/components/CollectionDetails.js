@@ -4,6 +4,7 @@ import BookDetailsPopup from "./BookDetailsPopup"; // Import BookDetailsPopup co
 const CollectionDetails = ({
   collection,
   onClose,
+  onDelete, // Receive the onDelete function
   collections,
   setCollections,
 }) => {
@@ -17,10 +18,25 @@ const CollectionDetails = ({
     setSelectedBook(null);
   };
 
+  const handleDeleteClick = () => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this collection?"
+    );
+    if (isConfirmed) {
+      onDelete(collection); // Call onDelete function with the current collection
+    }
+  };
+
   return (
     <div className="collection-details">
       <h3>{collection.name}</h3>
-      <button onClick={onClose}>Close</button>
+      <button className="AddToCollectionsButton" onClick={onClose}>
+        Close
+      </button>
+      <button className="CancelButton" onClick={handleDeleteClick}>
+        Delete Collection
+      </button>{" "}
+      {/* Call handleDeleteClick on button click */}
       <div className="SearchResults">
         {collection.books.map((book, index) => (
           <div

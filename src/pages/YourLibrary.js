@@ -26,6 +26,8 @@ function YourLibrary({
         addToFavorites={addToFavorites}
         removeFromFavorites={removeFromFavorites}
         addBookToCollection={addBookToCollection}
+        collections={collections}
+        setCollections={setCollections}
       />
     </div>
   );

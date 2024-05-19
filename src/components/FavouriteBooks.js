@@ -6,6 +6,8 @@ function FavouriteBooks({
   favoriteBooks,
   addToFavorites,
   removeFromFavorites,
+  collections,
+  setCollections,
 }) {
   const [sortOrder, setSortOrder] = useState("recent");
   const [filter, setFilter] = useState("All");
@@ -130,6 +132,8 @@ function FavouriteBooks({
           book={selectedBook}
           onClose={closeDialog}
           onUnfavorite={handleUnfavorite}
+          collections={collections}
+          setCollections={setCollections}
         />
       )}
     </div>
