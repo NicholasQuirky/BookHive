@@ -18,7 +18,7 @@ const PopularBooks = ({
     const fetchPopularBooks = async () => {
       try {
         const response = await axios.get(
-          "https://www.googleapis.com/books/v1/volumes?q=Fiction&key=AIzaSyBrg6gyOZTUx2lC9Tb03C4wrNN7JL-nsPw&maxResults=10"
+          "https://www.googleapis.com/books/v1/volumes?q=Fiction&key=AIzaSyB8YH1j4mqz3FkYXW_5Z1DGCB5q_yyf2KQ&maxResults=10"
         );
         setPopularBooks(response.data.items || []);
       } catch (error) {
@@ -39,9 +39,11 @@ const PopularBooks = ({
 
   const handleAddToFavorites = () => {
     if (selectedBook) {
-      const isAlreadyAdded = favoriteBooks.some(favorite => favorite.id === selectedBook.id);
+      const isAlreadyAdded = favoriteBooks.some(
+        (favorite) => favorite.id === selectedBook.id
+      );
       if (isAlreadyAdded) {
-        alert('This book is already added to favorites.');
+        alert("This book is already added to favorites.");
       } else {
         addToFavorites(selectedBook);
         setSelectedBook(null);

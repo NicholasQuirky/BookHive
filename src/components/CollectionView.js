@@ -26,7 +26,7 @@ const CollectionView = ({ collection, onClose, onDelete }) => {
           )}
         </div>
         <div className="DeleteCollection">
-        <button onClick={handleDeleteCollection}>Delete Collection</button>
+          <button onClick={handleDeleteCollection}>Delete Collection</button>
         </div>
       </div>
     </div>

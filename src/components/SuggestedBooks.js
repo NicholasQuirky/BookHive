@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import BookCover from '../images/BookCover.png';
-import PopupDialog from './PopupDialog';
-import SeeMoreButton from './SeeMoreButton'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import BookCover from "../images/BookCover.png";
+import PopupDialog from "./PopupDialog";
+import SeeMoreButton from "./SeeMoreButton";
 
-const SuggestedBooks = ({ favoriteBooks, addToFavorites, collections, setCollections }) => {
+const SuggestedBooks = ({
+  favoriteBooks,
+  addToFavorites,
+  collections,
+  setCollections,
+}) => {
   const [suggestedBooks, setSuggestedBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [page, setPage] = useState(0);
@@ -13,11 +18,11 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites, collections, setCollect
     const fetchSuggestedBooks = async () => {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=InternetOfThings&key=AIzaSyBrg6gyOZTUx2lC9Tb03C4wrNN7JL-nsPw&maxResults=10`
+          `https://www.googleapis.com/books/v1/volumes?q=InternetOfThings&key=AIzaSyB8YH1j4mqz3FkYXW_5Z1DGCB5q_yyf2KQ&maxResults=10`
         );
         setSuggestedBooks(response.data.items);
       } catch (error) {
-        console.error('Error fetching suggested books:', error);
+        console.error("Error fetching suggested books:", error);
       }
     };
 
@@ -34,9 +39,11 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites, collections, setCollect
 
   const handleAddToFavorites = () => {
     if (selectedBook) {
-      const isAlreadyAdded = favoriteBooks.some(favorite => favorite.id === selectedBook.id);
+      const isAlreadyAdded = favoriteBooks.some(
+        (favorite) => favorite.id === selectedBook.id
+      );
       if (isAlreadyAdded) {
-        alert('This book is already added to favorites.');
+        alert("This book is already added to favorites.");
       } else {
         addToFavorites(selectedBook);
         setSelectedBook(null);
@@ -83,7 +90,12 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites, collections, setCollect
           setCollections={setCollections} // Pass setCollections as prop
         />
       )}
-      <SeeMoreButton query="InternetOfThings" page={page} setBooks={setSuggestedBooks} setPage={setPage} />
+      <SeeMoreButton
+        query="InternetOfThings"
+        page={page}
+        setBooks={setSuggestedBooks}
+        setPage={setPage}
+      />
     </div>
   );
 };

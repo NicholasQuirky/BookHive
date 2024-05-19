@@ -6,12 +6,9 @@ import YourLibrary from "./pages/YourLibrary";
 import SearchResults from "./components/SearchResults";
 import { FavoritesProvider } from "./context/FavoritesContext";
 
-// Removed the unused import for CollectionCover
-// import CollectionCover from "./images/BookCover.png";
-
 // Define the generateUniqueId function
 const generateUniqueId = () => {
-  return '_' + Math.random().toString(36).substr(2, 9);
+  return "_" + Math.random().toString(36).substr(2, 9);
 };
 
 function App() {
@@ -19,7 +16,7 @@ function App() {
   const [collections, setCollections] = useState([]);
 
   const addToFavorites = (book) => {
-    console.log("Adding to favorites:", favoriteBooks);
+    console.log("Adding to favorites:", book);
     setFavoriteBooks((prevFavoriteBooks) => [...prevFavoriteBooks, book]);
   };
 
@@ -34,7 +31,7 @@ function App() {
       id: generateUniqueId(),
       name: collectionName,
       dateAdded: new Date(),
-      books: []
+      books: [],
     };
     setCollections((collections) => [...collections, newCollection]);
   };
