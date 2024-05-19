@@ -1,4 +1,3 @@
-// SearchContainer.js
 import React, { useState } from "react";
 import axios from "axios";
 import backgroundImage from "../images/library-background.png";
@@ -55,8 +54,8 @@ function SearchContainer({ favoriteBooks, addToFavorites, collections, setCollec
           onClose={handleCloseSearchResults}
           addToFavorites={addToFavorites}
           favoriteBooks={favoriteBooks}
-          collections={collections} // Pass collections prop
-          setCollections={setCollections} // Pass setCollections prop
+          collections={collections} 
+          setCollections={setCollections} 
         />
       )}
     </div>

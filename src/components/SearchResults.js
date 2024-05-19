@@ -12,8 +12,8 @@ const SearchResults = ({
   onClose,
   addToFavorites,
   removeFromFavorites,
-  collections, // Add collections prop
-  setCollections, // Add setCollections prop
+  collections, 
+  setCollections, 
 }) => {
   const [clickedBook, setClickedBook] = useState(null);
   const [page, setPage] = useState(1);
@@ -81,9 +81,9 @@ const SearchResults = ({
           book={clickedBook}
           onClose={handleCloseDialog}
           onAddToFavorites={handleAddToFavorites}
-          onUnfavorite={handleUnfavorite} // Pass handleUnfavorite function
-          collections={collections} // Pass collections as prop
-          setCollections={setCollections} // Pass setCollections as prop
+          onUnfavorite={handleUnfavorite} 
+          collections={collections} 
+          setCollections={setCollections} 
         />
       )}
       <SeeMoreButton
