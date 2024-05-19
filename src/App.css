@@ -196,7 +196,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  width: max-content;
+  width: 90%;
+  max-width: 1032px;
   text-align: center;
   max-height: 80vh;
   overflow: auto;
@@ -205,7 +206,14 @@ body {
 .PopupContent {
   display: flex;
   align-items: flex-start;
-  width: max-content;
+}
+
+@media (max-width: 600px) {
+  .PopupContent {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 20px;
+  }
 }
 
 .PopupLeftColumn {
@@ -259,14 +267,13 @@ body {
   margin: 0%;
 }
 
-.PopupButtonHolder{
+.PopupButtonHolder {
   display: flex;
   justify-content: space-evenly;
 }
 
 .PopupRightColumn {
   position: relative;
-  width: 500px;
   height: 100%;
   margin-left: 20px;
   margin-right: 20px;
@@ -306,7 +313,7 @@ body {
   background-color: #b08968;
 }
 
-.AddToFavoritesButton{
+.AddToFavoritesButton {
   background-color: rgb(16, 152, 16);
 }
 .AddToFavoritesButton:hover {
@@ -367,7 +374,6 @@ body {
   background-color: #b08968;
   color: white;
 }
-
 
 /*popular books */
 .PopularBooksContainer {
@@ -530,7 +536,6 @@ body {
 .DeleteCollection button:hover {
   background-color: #cc0000; /* Darker red background color on hover */
 }
-
 
 /* Favourite Books*/
 
@@ -728,7 +733,8 @@ body {
 }
 
 .CollectionView h2,
-.CollectionView p { /* Apply black color to both headings and paragraphs */
+.CollectionView p {
+  /* Apply black color to both headings and paragraphs */
   color: black;
 }
 
@@ -749,5 +755,4 @@ body {
 }
 
 .DeleteCollection {
-  
 }
