@@ -5,6 +5,7 @@ import CollectionCover from "../images/BookCover.png";
 import SeeMoreButton from "./SeeMoreButton";
 
 const SearchResults = ({
+  favoriteBooks,
   searchResults,
   setSearchResults,
   searchQuery,
@@ -25,8 +26,13 @@ const SearchResults = ({
 
   const handleAddToFavorites = () => {
     if (clickedBook) {
-      addToFavorites(clickedBook);
-      setClickedBook(null);
+      const isAlreadyAdded = favoriteBooks.some(favorite => favorite.id === clickedBook.id);
+      if (isAlreadyAdded) {
+        alert('This book is already added to favorites.');
+      } else {
+        addToFavorites(clickedBook);
+        setClickedBook(null);
+      }
     }
   };
 

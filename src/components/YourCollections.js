@@ -5,19 +5,13 @@ import CollectionCover from "../images/BookCover.png";
 import CreateCollection from "./CreateCollection";
 import CollectionView from "./CollectionView";
 
-const YourCollections = ({ addToFavorites }) => {
-  const [collections, setCollections] = useState([]);
+const YourCollections = ({ addToFavorites, collections, setCollections, handleCreateCollection }) => {
+ 
+  //const [collections, setCollections] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(null);
 
-  const handleCreateCollection = (collectionName) => {
-    const newCollection = {
-      name: collectionName,
-      photo: CollectionCover,
-      books: [] // Initialize an empty array for storing books
-    };
-    setCollections([...collections, newCollection]);
-  };
+  
 
   const handleViewCollection = (collection) => {
     setSelectedCollection(collection);

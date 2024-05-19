@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const CreateCollection = ({ isOpen, onClose, onCreateCollection }) => {
   const [newCollectionName, setNewCollectionName] = useState("");
+  const [collectionList, setCollectionList] = useState([]);
 
   const handleCreateCollection = () => {
     if (newCollectionName.trim() !== "") {

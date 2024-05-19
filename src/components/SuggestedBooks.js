@@ -34,8 +34,13 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
 
   const handleAddToFavorites = () => {
     if (selectedBook) {
-      addToFavorites(selectedBook);
-      setSelectedBook(null);
+      const isAlreadyAdded = favoriteBooks.some(favorite => favorite.id === selectedBook.id);
+      if (isAlreadyAdded) {
+        alert('This book is already added to favorites.');
+      } else {
+        addToFavorites(selectedBook);
+        setSelectedBook(null);
+      }
     }
   };
 
