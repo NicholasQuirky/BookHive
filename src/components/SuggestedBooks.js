@@ -4,7 +4,7 @@ import BookCover from '../images/BookCover.png';
 import PopupDialog from './PopupDialog';
 import SeeMoreButton from './SeeMoreButton'; 
 
-const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
+const SuggestedBooks = ({ favoriteBooks, addToFavorites, collections, setCollections }) => {
   const [suggestedBooks, setSuggestedBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [page, setPage] = useState(0);
@@ -79,6 +79,8 @@ const SuggestedBooks = ({ favoriteBooks, addToFavorites }) => {
           book={selectedBook}
           onClose={handleCloseDialog}
           onAddToFavorites={handleAddToFavorites}
+          collections={collections} // Pass collections as prop
+          setCollections={setCollections} // Pass setCollections as prop
         />
       )}
       <SeeMoreButton query="InternetOfThings" page={page} setBooks={setSuggestedBooks} setPage={setPage} />

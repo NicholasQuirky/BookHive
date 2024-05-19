@@ -1,9 +1,10 @@
+// SearchContainer.js
 import React, { useState } from "react";
 import axios from "axios";
 import backgroundImage from "../images/library-background.png";
 import SearchResults from "./SearchResults";
 
-function SearchContainer({ favoriteBooks, addToFavorites }) {
+function SearchContainer({ favoriteBooks, addToFavorites, collections, setCollections }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
@@ -11,7 +12,7 @@ function SearchContainer({ favoriteBooks, addToFavorites }) {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=AIzaSyBrg6gyOZTUx2lC9Tb03C4wrNN7JL-nsPw&maxResults=10`
+        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=10`
       );
       setSearchResults(response.data.items || []);
       setSearchResultsVisible(true);
@@ -54,6 +55,8 @@ function SearchContainer({ favoriteBooks, addToFavorites }) {
           onClose={handleCloseSearchResults}
           addToFavorites={addToFavorites}
           favoriteBooks={favoriteBooks}
+          collections={collections} // Pass collections prop
+          setCollections={setCollections} // Pass setCollections prop
         />
       )}
     </div>

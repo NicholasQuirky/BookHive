@@ -5,9 +5,14 @@ import Home from "./pages/Home";
 import YourLibrary from "./pages/YourLibrary";
 import SearchResults from "./components/SearchResults";
 import { FavoritesProvider } from "./context/FavoritesContext";
-import CollectionCover from "./images/BookCover.png";
 
+// Removed the unused import for CollectionCover
+// import CollectionCover from "./images/BookCover.png";
 
+// Define the generateUniqueId function
+const generateUniqueId = () => {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
 
 function App() {
   const [favoriteBooks, setFavoriteBooks] = useState([]);
@@ -26,13 +31,14 @@ function App() {
 
   const handleCreateCollection = (collectionName) => {
     const newCollection = {
+      id: generateUniqueId(),
       name: collectionName,
-      photo: CollectionCover,
+      dateAdded: new Date(),
       books: []
     };
-    setCollections((collections)=> [...collections, newCollection]);
+    setCollections((collections) => [...collections, newCollection]);
   };
- 
+
   return (
     <div>
       <FavoritesProvider>
@@ -45,6 +51,8 @@ function App() {
                   favoriteBooks={favoriteBooks}
                   addToFavorites={addToFavorites}
                   removeFromFavorites={removeFromFavorites}
+                  collections={collections}
+                  setCollections={setCollections}
                 />
               }
             />
@@ -55,8 +63,8 @@ function App() {
                   favoriteBooks={favoriteBooks}
                   addToFavorites={addToFavorites}
                   removeFromFavorites={removeFromFavorites}
-                  setCollections={setCollections}
                   collections={collections}
+                  setCollections={setCollections}
                   handleCreateCollection={handleCreateCollection}
                 />
               }
@@ -72,6 +80,8 @@ function App() {
                   addToFavorites={addToFavorites}
                   removeFromFavorites={removeFromFavorites}
                   favoriteBooks={favoriteBooks}
+                  setCollections={setCollections}
+                  handleCreateCollection={handleCreateCollection}
                 />
               }
             />

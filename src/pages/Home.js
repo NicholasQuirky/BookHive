@@ -3,9 +3,9 @@ import Navbar from "../components/Navbar";
 import SuggestedBooks from "../components/SuggestedBooks";
 import PopularBooks from "../components/PopularBooks";
 import SearchContainer from "../components/SearchContainer";
-import SearchResults from "../components/SearchResults"; // Import the SearchResults component
+import SearchResults from "../components/SearchResults";
 
-function Home({ favoriteBooks, addToFavorites }) {
+function Home({ favoriteBooks, addToFavorites, collections, setCollections }) {
   const [searchResults, setSearchResults] = useState([]);
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
 
@@ -22,6 +22,8 @@ function Home({ favoriteBooks, addToFavorites }) {
         setSearchResults={setSearchResults}
         favoriteBooks={favoriteBooks}
         addToFavorites={addToFavorites}
+        collections={collections} // Pass collections prop
+        setCollections={setCollections} // Pass setCollections prop
       />
       <main>
         {searchResultsVisible && (
@@ -30,6 +32,8 @@ function Home({ favoriteBooks, addToFavorites }) {
             onClose={closeSearchResults}
             favoriteBooks={favoriteBooks}
             addToFavorites={addToFavorites}
+            collections={collections} // Pass collections prop
+            setCollections={setCollections} // Pass setCollections prop
           />
         )}
         {!searchResultsVisible && (
@@ -37,10 +41,14 @@ function Home({ favoriteBooks, addToFavorites }) {
             <SuggestedBooks
               favoriteBooks={favoriteBooks}
               addToFavorites={addToFavorites}
+              collections={collections}
+              setCollections={setCollections}
             />
             <PopularBooks
               favoriteBooks={favoriteBooks}
               addToFavorites={addToFavorites}
+              collections={collections} // Pass collections prop
+              setCollections={setCollections} // Pass setCollections prop
             />
           </>
         )}
