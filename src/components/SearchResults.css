@@ -39,6 +39,12 @@
   background-color: #ede0d4;
 }
 
+@media (max-width: 600px) {
+  .SearchResults  {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .SearchResultBook img {
   width: 100%;
   height: auto;
