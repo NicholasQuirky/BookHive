@@ -13,16 +13,13 @@ const ValidationDialog = ({
 
   if (!book) return null;
 
-  // Function to handle toggling the dropdown visibility
   const handleAddToCollections = () => {
     setShowDropdown((prevShowDropdown) => !prevShowDropdown);
   };
 
-  // Function to add the book to the selected collection
   const addToCollection = (collection) => {
     const updatedCollections = collections.map((col) => {
       if (col.id === collection.id) {
-        // Check if the book is already in the collection to avoid duplicates
         const bookExists = col.books.some((b) => b.id === book.id);
         if (!bookExists) {
           return {
@@ -43,7 +40,7 @@ const ValidationDialog = ({
       return col;
     });
     setCollections(updatedCollections);
-    setShowDropdown(false); // Close the dropdown after adding
+    setShowDropdown(false);
   };
 
   return (

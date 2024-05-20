@@ -30,9 +30,6 @@ const BookDetailsPopup = ({
               <p className="DialogDescription">
                 {book.description || "No description available"}
               </p>
-              <div className="PopupButtonHolder">
-                <button onClick={onAddToFavorites}>Add to Favorites</button>
-              </div>
             </>
           )}
         </div>

@@ -98,7 +98,7 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
         <CollectionDetails
           collection={selectedCollection}
           onClose={handleCloseCollectionView}
-          onDelete={handleDeleteCollection} // Pass the delete function
+          onDelete={handleDeleteCollection}
         />
       )}
     </div>

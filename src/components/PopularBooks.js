@@ -7,8 +7,8 @@ const PopularBooks = ({
   favoriteBooks,
   addToFavorites,
   removeFromFavorites,
-  collections, // Add collections prop
-  setCollections, // Add setCollections prop
+  collections,
+  setCollections,
 }) => {
   const [popularBooks, setPopularBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
@@ -92,8 +92,8 @@ const PopularBooks = ({
           onClose={handleCloseDialog}
           onAddToFavorites={handleAddToFavorites}
           onUnfavorite={handleUnfavorite}
-          collections={collections} // Pass collections prop
-          setCollections={setCollections} // Pass setCollections prop
+          collections={collections}
+          setCollections={setCollections}
         />
       )}
       <SeeMoreButton

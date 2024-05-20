@@ -28,8 +28,8 @@ function Home({
         setSearchResults={setSearchResults}
         favoriteBooks={favoriteBooks}
         addToFavorites={addToFavorites}
-        collections={collections} // Pass collections prop
-        setCollections={setCollections} // Pass setCollections prop
+        collections={collections}
+        setCollections={setCollections}
       />
       <main>
         {searchResultsVisible && (
@@ -38,8 +38,8 @@ function Home({
             onClose={closeSearchResults}
             favoriteBooks={favoriteBooks}
             addToFavorites={addToFavorites}
-            collections={collections} // Pass collections prop
-            setCollections={setCollections} // Pass setCollections prop
+            collections={collections}
+            setCollections={setCollections}
             addToCollection={addToCollection}
           />
         )}
@@ -55,8 +55,8 @@ function Home({
             <PopularBooks
               favoriteBooks={favoriteBooks}
               addToFavorites={addToFavorites}
-              collections={collections} // Pass collections prop
-              setCollections={setCollections} // Pass setCollections prop
+              collections={collections}
+              setCollections={setCollections}
               addToCollection={addToCollection}
             />
           </>

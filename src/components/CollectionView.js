@@ -2,7 +2,7 @@ import React from "react";
 
 const CollectionView = ({ collection, onClose, onDelete }) => {
   const handleDeleteCollection = () => {
-    onDelete(collection.id); // Assuming collection has an id
+    onDelete(collection.id);
   };
 
   return (

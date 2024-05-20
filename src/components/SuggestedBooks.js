@@ -86,8 +86,8 @@ const SuggestedBooks = ({
           book={selectedBook}
           onClose={handleCloseDialog}
           onAddToFavorites={handleAddToFavorites}
-          collections={collections} // Pass collections as prop
-          setCollections={setCollections} // Pass setCollections as prop
+          collections={collections}
+          setCollections={setCollections}
         />
       )}
       <SeeMoreButton

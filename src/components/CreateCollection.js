@@ -6,10 +6,10 @@ const CreateCollection = ({ isOpen, onClose, onCreateCollection }) => {
   const handleCreateCollection = () => {
     if (newCollectionName.trim() !== "") {
       onCreateCollection(newCollectionName);
-      setNewCollectionName(""); // Reset new collection name
-      onClose(); // Close the popup
+      setNewCollectionName("");
+      onClose();
     } else {
-      window.alert("Enter a collection name first!"); // Display alert
+      window.alert("Enter a collection name first!");
     }
   };
 

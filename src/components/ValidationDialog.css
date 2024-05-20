@@ -97,6 +97,7 @@
 }
 
 .CancelButton {
+  margin-left: 10px;
   background-color: #f44336;
   color: white;
 }

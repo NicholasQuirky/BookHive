@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CollectionDetails from "./CollectionDetails"; // Import CollectionDetails component
+import CollectionDetails from "./CollectionDetails";
 
 const PopupDialog = ({
   book,
@@ -10,21 +10,17 @@ const PopupDialog = ({
   setCollections,
   collectionId,
 
-  // Pass collectionId prop
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedCollection, setSelectedCollection] = useState(null); // State to store selected collection
+  const [selectedCollection, setSelectedCollection] = useState(null);
 
-  // Function to handle toggling the dropdown visibility
   const handleAddToCollections = () => {
     setShowDropdown((prevShowDropdown) => !prevShowDropdown);
   };
 
-  // Function to add the book to the selected collection
   const addToCollection = (collection) => {
     const updatedCollections = collections.map((col) => {
       if (col.id === collection.id) {
-        // Check if the book is already in the collection to avoid duplicates
         const bookExists = col.books.some((b) => b.id === book.id);
         if (!bookExists) {
           return {
@@ -45,10 +41,9 @@ const PopupDialog = ({
       return col;
     });
     setCollections(updatedCollections);
-    setShowDropdown(false); // Close the dropdown after adding
+    setShowDropdown(false);
   };
 
-  // Function to remove the book from the collection
   const removeFromCollection = () => {
     const updatedCollections = collections.map((col) => {
       if (col.id === collectionId) {
@@ -60,7 +55,7 @@ const PopupDialog = ({
       return col;
     });
     setCollections(updatedCollections);
-    onClose(); // Close the dialog after removing
+    onClose();
   };
 
   return (
@@ -103,7 +98,6 @@ const PopupDialog = ({
                   Add to Favorites
                 </button>
                 {collectionId ? (
-                  // If collectionId is provided, render the option to remove from collection
                   <button
                     className="RemoveFromCollectionButton"
                     onClick={removeFromCollection}
@@ -111,7 +105,6 @@ const PopupDialog = ({
                     Remove from Collection
                   </button>
                 ) : (
-                  // Otherwise, render the option to add to collections
                   <div className="DropDownMenu">
                     <button
                       className="AddToCollectionsButton"

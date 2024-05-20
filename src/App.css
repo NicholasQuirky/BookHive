@@ -336,6 +336,7 @@ body {
   border-radius: 5px;
   align-self: center;
   margin-top: 20px;
+  margin-bottom: 20px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -489,6 +490,10 @@ body {
 }
 
 .YourCollectionInfo {
+  color: black;
+}
+
+.CollectionTitle {
   color: black;
 }
 
@@ -658,7 +663,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   width: 90%;
-  max-width: 1032px;
+  max-width: 435px;
   text-align: center;
   max-height: 80vh;
   overflow: auto;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BookCover from "../images/BookCover.png";
-import ValidationDialog from "./ValidationDialog"; // Import the validation dialog component
+import ValidationDialog from "./ValidationDialog";
 
 function FavouriteBooks({
   favoriteBooks,
@@ -12,11 +12,10 @@ function FavouriteBooks({
   const [sortOrder, setSortOrder] = useState("recent");
   const [filter, setFilter] = useState("All");
   const [categories, setCategories] = useState(["All"]);
-  const [selectedBook, setSelectedBook] = useState(null); // State for selected book
-  const [isDialogOpen, setIsDialogOpen] = useState(false); // State for dialog visibility
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
-    // Extract unique categories from favoriteBooks
     const uniqueCategories = new Set();
     favoriteBooks.forEach((book) => {
       if (book.volumeInfo.categories) {
@@ -26,7 +25,6 @@ function FavouriteBooks({
       }
     });
 
-    // Convert the Set to an array and add "All" at the beginning
     setCategories(["All", ...Array.from(uniqueCategories)]);
   }, [favoriteBooks]);
 
@@ -43,9 +41,9 @@ function FavouriteBooks({
           return authorA.localeCompare(authorB);
         });
       case "recent":
-        return [...books].reverse(); // Reverse the array to get the opposite order
+        return [...books].reverse();
       default:
-        return books; // Assuming favoriteBooks is already in "Recently Added" order
+        return books;
     }
   };
 
@@ -72,8 +70,8 @@ function FavouriteBooks({
 
   const handleUnfavorite = () => {
     if (selectedBook) {
-      removeFromFavorites(selectedBook); // Call the function to remove from favorites
-      closeDialog(); // Close the dialog after removing from favorites
+      removeFromFavorites(selectedBook);
+      closeDialog();
     }
   };
 

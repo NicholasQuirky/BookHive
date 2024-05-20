@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import BookDetailsPopup from "./BookDetailsPopup"; // Import BookDetailsPopup component
+import BookDetailsPopup from "./BookDetailsPopup";
 
 const CollectionDetails = ({
   collection,
   onClose,
-  onDelete, // Receive the onDelete function
+  onDelete,
   collections,
   setCollections,
 }) => {
@@ -23,13 +23,12 @@ const CollectionDetails = ({
       "Are you sure you want to delete this collection?"
     );
     if (isConfirmed) {
-      onDelete(collection); // Call onDelete function with the current collection
+      onDelete(collection);
     }
   };
 
   return (
     <div className="collection-details">
-      <h3>{collection.name}</h3>
       <button className="AddToCollectionsButton" onClick={onClose}>
         Close
       </button>
@@ -61,8 +60,8 @@ const CollectionDetails = ({
         <BookDetailsPopup
           book={selectedBook}
           onClose={handleCloseDialog}
-          collections={collections} // Pass collections prop
-          setCollections={setCollections} // Pass setCollections prop
+          collections={collections}
+          setCollections={setCollections}
         />
       )}
     </div>
