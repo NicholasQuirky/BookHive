@@ -54,6 +54,13 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
     setCollections([...collections, newCollection]);
   };
 
+  const handleUpdateCollectionName = (collectionId, newName) => {
+    const updatedCollections = collections.map((collection) =>
+      collection.id === collectionId ? { ...collection, name: newName } : collection
+    );
+    setCollections(updatedCollections);
+  };
+
   return (
     <div className="YourCollectionsContainer">
       <h4>Your Collections</h4>
@@ -99,6 +106,7 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
           collection={selectedCollection}
           onClose={handleCloseCollectionView}
           onDelete={handleDeleteCollection}
+          onUpdateCollectionName={handleUpdateCollectionName}
         />
       )}
     </div>
@@ -106,3 +114,4 @@ const YourCollections = ({ addToFavorites, collections, setCollections }) => {
 };
 
 export default YourCollections;
+
