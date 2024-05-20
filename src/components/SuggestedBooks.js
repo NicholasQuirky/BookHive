@@ -18,7 +18,7 @@ const SuggestedBooks = ({
     const fetchSuggestedBooks = async () => {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=InternetOfThings&key=AIzaSyB8YH1j4mqz3FkYXW_5Z1DGCB5q_yyf2KQ&maxResults=10`
+          `https://www.googleapis.com/books/v1/volumes?q=InternetOfThings&key=AIzaSyD-a7AWRLKJtv-V3vAM9clfH9MYVB3uk7A&maxResults=10`
         );
         setSuggestedBooks(response.data.items);
       } catch (error) {
